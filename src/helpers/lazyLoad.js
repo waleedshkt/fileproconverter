@@ -6,7 +6,7 @@ const Spinner = ({ isComponent, restProps }) => (
     <div style={{ position: 'relative', height: `100${isComponent ? '%' : 'vh'}`, width: `100${isComponent ? '%' : 'vw'}` }} {...restProps}>
         <Spin 
             style={{ position: 'absolute', top: '50%', left: '50%', transform: 'translate(-50%, -50%)' }} 
-            indicator={<LoadingOutlined spin style={{ fontSize: '48px', color: '#000000' }} />}
+            indicator={<LoadingOutlined spin style={{ fontSize: '48px', color: '#7e56d9' }} />}
         />
     </div>
 );
