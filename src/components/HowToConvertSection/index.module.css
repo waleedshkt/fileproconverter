@@ -1,0 +1,64 @@
+.howToConvert1 {
+    position: relative;
+    line-height: var(--font-size-5xl);
+    font-weight: 500;
+  }
+  .clickThe {
+    font-weight: 300;
+    font-family: var(--text-md-semibold);
+  }
+  .selectFiles {
+    font-weight: 500;
+    font-family: var(--text-md-semibold);
+  }
+  .buttonAndSelect {
+    font-weight: 300;
+  }
+  .selectTheFormatYouWantThe {
+    margin-bottom: 0px;
+  }
+  .clickTheSelectFilesButto {
+    margin: 0;
+    font-size: inherit;
+    padding-left: var(--padding-2xl);
+  }
+  .clickTheSelectContainer {
+    align-self: stretch;
+    position: relative;
+    font-size: var(--text-md-semibold-size);
+  }
+  .howToConvert {
+    align-self: stretch;
+    border: 1px solid var(--color-mediumslateblue-100);
+    box-sizing: border-box;
+    height: 196px;
+    overflow: hidden;
+    flex-shrink: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: flex-start;
+    padding: var(--padding-5xl);
+    gap: var(--gap-5xl);
+    min-height: 160px;
+    text-align: left;
+    font-size: var(--font-size-xl);
+    color: var(--color-black);
+    font-family: var(--text-md-semibold);
+  }
+  
+  @media screen and (max-width: 668px) {
+    .howToConvert {
+      height: auto;
+    }
+  }
+  @media screen and (max-width: 420px) {
+    .howToConvert1 {
+      font-size: var(--text-md-semibold-size);
+    }
+  
+    .clickTheSelectContainer {
+      font-size: var(--text-sm-regular-size);
+    }
+  }
+  

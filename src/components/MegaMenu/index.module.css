@@ -1,0 +1,91 @@
+.heading {
+    align-self: stretch;
+    position: relative;
+    line-height: var(--font-size-xl);
+    font-weight: 600;
+  }
+  .text {
+    position: relative;
+    line-height: var(--font-size-5xl);
+    font-weight: 600;
+  }
+  .buttonBase {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+  }
+  .footerLinks {
+    align-self: stretch;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: flex-start;
+    gap: var(--gap-xs);
+    font-size: var(--text-md-semibold-size);
+  }
+  .footerLinksColumn {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: flex-start;
+    gap: var(--gap-base);
+  }
+  .text18 {
+    position: relative;
+    line-height: var(--font-size-5xl);
+    font-weight: 600;
+    display: none;
+  }
+  .buttonBase18 {
+    width: 74px;
+    height: 24px;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+  }
+  .footerLink {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: flex-start;
+    color: var(--brand-200);
+  }
+  .content {
+    align-self: stretch;
+    display: flex;
+    flex-direction: row;
+    align-items: flex-start;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    align-content: flex-start;
+    gap: var(--gap-13xl) var(--gap-0);
+  }
+  .container {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: flex-start;
+    padding: 0px var(--padding-13xl);
+    box-sizing: border-box;
+    max-width: 1280px;
+  }
+  .megaMenuCategories {
+    width: 1360px;
+    background-color: var(--white);
+    border-bottom: 20px solid var(--color-paleturquoise);
+    box-sizing: border-box;
+    max-width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+    padding: var(--padding-45xl) var(--padding-21xl) var(--padding-29xl);
+    text-align: left;
+    font-size: var(--font-size-xl);
+    color: var(--color-mediumslateblue-100);
+    font-family: var(--text-md-semibold);
+  }
+  

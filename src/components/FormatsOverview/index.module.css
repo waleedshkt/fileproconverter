@@ -1,0 +1,102 @@
+.subNavigation {
+    position: absolute;
+    top: 118px;
+    left: 0px;
+    width: 610px;
+    overflow: hidden;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: flex-start;
+    gap: var(--gap-9xs);
+  }
+  .formatOverview {
+    position: absolute;
+    top: 0px;
+    left: 0px;
+    font-size: var(--font-size-5xl);
+    line-height: var(--font-size-5xl);
+    font-weight: 500;
+  }
+  .text {
+    position: relative;
+    line-height: var(--font-size-xl);
+    font-weight: 500;
+  }
+  .content {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    padding: 0px var(--padding-9xs) var(--padding-base);
+  }
+  .bottomBorder {
+    align-self: stretch;
+    position: relative;
+    background-color: var(--color-mediumslateblue-100);
+    height: 2px;
+  }
+  .tabButtonBase {
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+  }
+  .bottomBorder1 {
+    align-self: stretch;
+    position: relative;
+    height: 2px;
+  }
+  .tabButtonBase1 {
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    color: var(--color-mediumslateblue-200);
+  }
+  .tabs {
+    position: absolute;
+    top: 56px;
+    left: 0px;
+    display: flex;
+    flex-direction: row;
+    align-items: flex-start;
+    justify-content: flex-start;
+    gap: var(--gap-base);
+    color: var(--color-mediumslateblue-100);
+  }
+  .fkjfkjgfdgFgkjfdkgjfdGfdkjgf {
+    margin-block-start: 0;
+    margin-block-end: 16px;
+  }
+  .gfgkfjkgjfkdgkj {
+    margin: 0;
+  }
+  .fkjfkjgfdgFgkjfdkgjfdGfdkjgfContainer {
+    position: absolute;
+    top: 198px;
+    left: 0px;
+    font-weight: 300;
+    display: inline-block;
+    width: 610px;
+  }
+  .formatsOverview {
+    align-self: stretch;
+    position: relative;
+    height: 294px;
+    overflow: hidden;
+    flex-shrink: 0;
+    text-align: left;
+    font-size: var(--text-md-semibold-size);
+    color: var(--color-black);
+    font-family: var(--text-md-semibold);
+  }
+  
+  @media screen and (max-width: 420px) {
+    .text {
+      font-size: var(--text-sm-regular-size);
+    }
+  }
+  

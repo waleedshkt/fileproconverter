@@ -1,0 +1,119 @@
+.xIcon {
+    width: 32px;
+    position: relative;
+    height: 32px;
+    cursor: pointer;
+  }
+  .text {
+    position: relative;
+    line-height: var(--font-size-5xl);
+    font-weight: 500;
+  }
+  .buttonBase {
+    align-self: stretch;
+    border-radius: var(--br-5xs);
+    height: 44px;
+    overflow: hidden;
+    flex-shrink: 0;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    padding: var(--padding-3xs) var(--padding-lg);
+    box-sizing: border-box;
+  }
+  .buttonBaseParent {
+    width: 272px;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: flex-start;
+    gap: var(--gap-base);
+  }
+  .xParent {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    justify-content: flex-start;
+    gap: var(--gap-xl);
+  }
+  .buttonBase5 {
+    align-self: stretch;
+    border-radius: var(--br-5xs);
+    overflow: hidden;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    padding: var(--padding-3xs) var(--padding-lg);
+    cursor: pointer;
+  }
+  .text6 {
+    position: relative;
+    line-height: var(--font-size-5xl);
+    font-weight: 600;
+  }
+  .buttonBase6 {
+    align-self: stretch;
+    box-shadow: 0px 1px 2px rgba(16, 24, 40, 0.05);
+    border-radius: var(--br-5xs);
+    background-color: var(--color-mediumslateblue-100);
+    border: 1px solid var(--color-mediumslateblue-100);
+    overflow: hidden;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    padding: var(--padding-3xs) var(--padding-lg);
+    cursor: pointer;
+    color: var(--white);
+  }
+  .navigationActions {
+    align-self: stretch;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: center;
+    gap: var(--gap-xs);
+  }
+  .sidemenu {
+    width: 300px;
+    position: relative;
+    background-color: var(--white);
+    height: 100%;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    justify-content: space-between;
+    padding: var(--padding-lg) var(--padding-sm);
+    box-sizing: border-box;
+    gap: var(--gap-0);
+    opacity: 0;
+    max-width: 90%;
+    text-align: left;
+    font-size: var(--text-md-semibold-size);
+    color: var(--color-black);
+    font-family: var(--text-md-semibold);
+  }
+  .sidemenu.animate {
+    animation: 0.25s ease 0s 1 normal forwards slide-in-right;
+  }
+  
+  @keyframes slide-in-right {
+    0% {
+      transform: translateX(200px);
+      opacity: 0;
+    }
+    100% {
+      transform: translateX(0);
+      opacity: 1;
+    }
+  }
+  
+  @media screen and (max-width: 753px) {
+    .navigationActions {
+      display: none;
+    }
+  }
+  

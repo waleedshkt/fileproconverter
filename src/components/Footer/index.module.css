@@ -1,0 +1,181 @@
+.heading {
+    align-self: stretch;
+    position: relative;
+    line-height: var(--font-size-xl);
+    font-weight: 600;
+  }
+  .text {
+    position: relative;
+    line-height: var(--font-size-5xl);
+    font-weight: 600;
+  }
+  .buttonBase {
+    cursor: pointer;
+    text-decoration: none;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    color: inherit;
+  }
+  .footerLinks {
+    align-self: stretch;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: flex-start;
+    gap: var(--gap-xs);
+    font-size: var(--text-md-semibold-size);
+  }
+  .footerLinksColumn {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: flex-start;
+    gap: var(--gap-base);
+  }
+  .buttonBase18 {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+  }
+  .footerLinks4 {
+    align-self: stretch;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: flex-start;
+    gap: var(--gap-xs);
+  }
+  .footerLinksColumn4 {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: flex-start;
+    font-size: var(--text-md-semibold-size);
+  }
+  .content {
+    align-self: stretch;
+    display: flex;
+    flex-direction: row;
+    align-items: flex-start;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    align-content: flex-start;
+    gap: var(--gap-21xl) var(--gap-0);
+  }
+  .container {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: flex-start;
+    padding: 0px var(--padding-13xl);
+    box-sizing: border-box;
+    max-width: 1280px;
+  }
+  .divider {
+    align-self: stretch;
+    position: relative;
+    background-color: var(--color-mediumslateblue-100);
+    height: 1px;
+  }
+  .contentIcon {
+    width: 32px;
+    position: relative;
+    border-radius: var(--br-5xs);
+    height: 32px;
+    overflow: hidden;
+    flex-shrink: 0;
+  }
+  .logomark {
+    box-shadow: 0px 1px 3px rgba(16, 24, 40, 0.1),
+      0px 1px 2px rgba(16, 24, 40, 0.06);
+    display: flex;
+    flex-direction: row;
+    align-items: flex-start;
+    justify-content: flex-start;
+  }
+  .anyConvertercom {
+    position: relative;
+    line-height: var(--font-size-5xl);
+  }
+  .logoWrap {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: flex-start;
+    gap: var(--gap-5xs);
+  }
+  .footerText {
+    position: relative;
+    font-size: var(--text-md-semibold-size);
+    line-height: var(--font-size-5xl);
+    font-family: var(--text-md-semibold);
+    color: var(--brand-300);
+  }
+  .content1 {
+    align-self: stretch;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    align-content: center;
+    gap: var(--gap-xl) var(--gap-0);
+  }
+  .container1 {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: flex-start;
+    padding: 0px var(--padding-13xl);
+    box-sizing: border-box;
+    gap: var(--gap-13xl);
+    max-width: 1280px;
+    font-size: var(--font-size-5xl);
+    font-family: var(--font-istok-web);
+  }
+  .footer {
+    align-self: stretch;
+    background-color: var(--color-mediumslateblue-100);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+    padding: var(--padding-45xl) 0px var(--padding-29xl);
+    gap: var(--gap-45xl);
+    text-align: left;
+    font-size: var(--text-lg-semibold-size);
+    color: var(--white);
+    font-family: var(--text-md-semibold);
+  }
+  
+  @media screen and (max-width: 420px) {
+    .heading {
+      font-size: var(--text-md-semibold-size);
+    }
+  
+    .text {
+      font-size: var(--text-sm-regular-size);
+    }
+  
+    .footerLinksColumn {
+      width: 300px;
+    }
+  
+    .footerLinksColumn4 {
+      width: 300px;
+    }
+  
+    .anyConvertercom {
+      font-size: var(--text-lg-semibold-size);
+    }
+  
+    .footerText {
+      font-size: var(--font-size-xs);
+    }
+  }
+  

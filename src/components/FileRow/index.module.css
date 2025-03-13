@@ -1,0 +1,81 @@
+.filenamejpg {
+    position: absolute;
+    top: 0px;
+    left: 0px;
+    line-height: 28px;
+  }
+  .mb {
+    position: absolute;
+    top: 21px;
+    left: 0px;
+    font-size: var(--font-size-xs);
+    line-height: 28px;
+  }
+  .filenamejpgParent {
+    width: 96px;
+    position: relative;
+    height: 49px;
+  }
+  .text {
+    position: relative;
+    line-height: var(--font-size-xl);
+    font-weight: 500;
+  }
+  .badgeBase {
+    border-radius: var(--br-base);
+    background-color: var(--purple-50);
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    padding: var(--padding-9xs) var(--padding-xs);
+  }
+  .badge {
+    display: flex;
+    flex-direction: row;
+    align-items: flex-start;
+    justify-content: flex-start;
+    mix-blend-mode: multiply;
+  }
+  .nut {
+    width: 24px;
+    position: relative;
+  }
+  .nutParent {
+    width: 76px;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    gap: var(--gap-0);
+  }
+  .badgeParent {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: flex-start;
+    gap: var(--gap-10xl);
+    text-align: center;
+    font-size: var(--text-sm-regular-size);
+    color: var(--purple-700);
+  }
+  .frameParent {
+    width: 569px;
+    border-radius: var(--br-5xs);
+    background-color: var(--white);
+    height: 53px;
+    overflow: hidden;
+    flex-shrink: 0;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    padding: var(--padding-11xs) var(--padding-xs);
+    box-sizing: border-box;
+    gap: var(--gap-0);
+    text-align: left;
+    font-size: var(--text-md-semibold-size);
+    color: var(--color-black);
+    font-family: var(--text-md-semibold);
+  }
+  
