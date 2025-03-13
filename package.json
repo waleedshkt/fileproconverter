@@ -21,6 +21,9 @@
     "@fingerprintjs/botd": "fingerprintjs/botd",
     "@hookstate/core": "^4.0.1",
     "antd": "^5.24.3",
+    "buffer": "^6.0.3",
+    "country-list": "^2.3.0",
+    "dayjs": "^1.11.13",
     "firebase": "^11.4.0",
     "formik": "^2.4.6",
     "gatsby": "^5.14.1",
@@ -37,6 +40,7 @@
     "react": "^18.2.0",
     "react-credit-card-input": "^1.1.5",
     "react-dom": "^18.2.0",
+    "uuid": "^11.1.0",
     "yup": "^1.6.1"
   },
   "packageManager": "yarn@1.22.21+sha1.1959a18351b811cdeedbd484a8f86c3cc3bbaf72"
