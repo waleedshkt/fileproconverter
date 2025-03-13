@@ -2,19 +2,18 @@ import React, { memo, useContext } from "react";
 import { useHookstate as useState } from "@hookstate/core";
 import { useFormik } from "formik";
 import { object as yupObject, string as yupString } from "yup"; 
-import { Input, Modal, message } from "antd";
+import { Input, Modal } from "antd";
 import * as styles from "./index.module.css";
 
 import { AuthContext } from "../../../helpers/auth/firebase/user";
-import { isAuth, isLoading } from "../../../globalStates";
+import { isAuth, misc } from "../../../globalStates";
 
 const LoginModal = ({ open, onClose }) => {
-  const [ messageApi, useContext ] = message.useMessage();
 
   const { signInWithEmail } = useContext(AuthContext);
     
   const isAuth_ = useState(isAuth); //global
-  const isLoading_ = useState(isLoading); //global
+  const misc_ = useState(misc); //global
 
   const validationSchema = yupObject({
     email: yupString("")
@@ -29,20 +28,21 @@ const LoginModal = ({ open, onClose }) => {
   const handleSubmitForm = useCallback(async (values) => {
     try {
 
-        isLoading_.set(true);
+        misc_.isLoading.set(true);
         const res = await signInWithEmail(values.email, values.password);
           
         if(!res) {
             throw res;
         }else { //authenticated
 
-            isLoading_.set(false);
+            misc_.isLoading.set(false);
             isAuth_.set(true);
+
+            onClose();
 
         }
 
     }catch(er) {
-      isLoading_.set(false);
 
       let error = "";
 
@@ -51,7 +51,13 @@ const LoginModal = ({ open, onClose }) => {
       }
 
       console.error(er?.message || er);
-      messageApi.open({ type: "error", content: error || "Failed to authenticate. Please try again", duration: 5 });
+      
+      misc_.set({
+        isLoading: false,
+        message: { type: "error", content: error || "Failed to authenticate. Please try again" }
+      });
+
+      onClose();
     }
   }, []);
 

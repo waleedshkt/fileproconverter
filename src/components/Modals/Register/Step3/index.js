@@ -1,15 +1,19 @@
-import * as React from "react";
-import "antd/dist/antd.min.css";
-import { Input, Dropdown, Menu, Button } from "antd";
-import { DownOutlined } from "@ant-design/icons";
-import PropTypes from "prop-types";
-import * as styles from "./modal-subscribe1.module.css";
+import React, { memo, useCallback, useMemo } from "react";
+import { Input, Select } from "antd";
+import * as styles from "./index.module.css";
 
-const ModalSubscribe1 = ({ className = "", onClose }) => {
+import { getNames as getCountries } from "country-list";
+
+const RegisterStep3 = ({ touched, errors, values, handleChange, handleBlur, setFieldValue }) => {
+
+  const countryNames = useMemo(() => getCountries().map((c, i) => ({ "label": c, "value": c })), [getCountries]);
+  
+  const onCountrySelectChange = useCallback((value) => setFieldValue("country", value, true), [setFieldValue]);
+
+  const onCountrySelectSearch = useCallback((value) => setFieldValue("country", value, true), [setFieldValue]);
+  
   return (
-    <div className={[styles.modalSubscribe3, className].join(" ")}>
-      <div className={styles.content}>
-        <div className={styles.step3Of}>Step 3 of 3</div>
+      <>
         <div className={styles.textAndSupportingText}>
           <div className={styles.text}>Billing Address</div>
           <div className={styles.supportingText}>
@@ -21,66 +25,58 @@ const ModalSubscribe1 = ({ className = "", onClose }) => {
             <div className={styles.inputWithLabel}>
               <div className={styles.label}>Street address</div>
               <Input
+                name="streetAddress"
+                placeholder="Enter here"
+                value={values.streetAddress}
+                onChange={handleChange}
+                onBlur={handleBlur}
                 className={styles.input}
-                placeholder="61, Gulshan Block, Allama Iqbal Tow"
-                bordered={true}
               />
+              {(!!errors.streetAddress && touched.streetAddress) && <span style={{ fontSize: "12px", color: "red" }}>{errors.streetAddress}</span>}
             </div>
             <div className={styles.inputWithLabel1}>
               <div className={styles.label}>Post code</div>
               <Input
+                name="postCode"
+                value={values.postCode}
+                onChange={handleChange}
+                onBlur={handleBlur}
                 className={styles.input}
-                placeholder="2024"
-                bordered={true}
+                placeholder="Enter here"
               />
+              {(!!errors.postCode && touched.postCode) && <span style={{ fontSize: "12px", color: "red" }}>{errors.postCode}</span>}
             </div>
           </div>
           <div className={styles.row}>
             <div className={styles.inputWithLabel2}>
               <div className={styles.label}>Country</div>
-              <Dropdown
-                className={styles.input2}
-                overlay={
-                  <Menu>
-                    {[].map((option, index) => (
-                      <Menu.Item key={index}>
-                        <a onClick={(e) => e.preventDefault()}>
-                          {option.value || ""}
-                        </a>
-                      </Menu.Item>
-                    ))}
-                  </Menu>
-                }
-                trigger={["hover"]}
-              >
-                <Button onClick={(e) => e.preventDefault()}>
-                  {`Select  `}
-                  <DownOutlined />
-                </Button>
-              </Dropdown>
+              <Select 
+                value={values.country}
+                showSearch
+                placeholder="Select country"
+                optionFilterProp="label"
+                onChange={onCountrySelectChange}
+                onSearch={onCountrySelectSearch}
+                options={countryNames}
+              />
+              {(!!errors.country && touched.country) && <span style={{ fontSize: "12px", color: "red" }}>{errors.country}</span>}
             </div>
             <div className={styles.inputWithLabel3}>
               <div className={styles.label}>City</div>
-              <Input className={styles.input} bordered={true} />
+              <Input
+                name="city"
+                placeholder="Enter here"
+                value={values.city}
+                onChange={handleChange}
+                onBlur={handleBlur}
+                className={styles.input}
+              />
+              {(!!errors.city && touched.city) && <span style={{ fontSize: "12px", color: "red" }}>{errors.city}</span>}
             </div>
           </div>
         </div>
-      </div>
-      <div className={styles.modalActions}>
-        <Button className={styles.buttonBase} type="default">
-          Cancel
-        </Button>
-        <Button className={styles.buttonBase} type="primary">
-          Next
-        </Button>
-      </div>
-    </div>
+      </>
   );
 };
 
-ModalSubscribe1.propTypes = {
-  className: PropTypes.string,
-  onClose: PropTypes.func,
-};
-
-export default ModalSubscribe1;
+export default memo(RegisterStep3);

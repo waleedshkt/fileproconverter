@@ -1,14 +1,11 @@
-import * as React from "react";
-import "antd/dist/antd.min.css";
-import { Input, Button } from "antd";
-import PropTypes from "prop-types";
-import * as styles from "./modal-subscribe.module.css";
+import React, { memo } from "react";
+import { Input } from "antd";
+import CreditCardInput from "react-credit-card-input";
+import * as styles from "./index.module.css";
 
-const ModalSubscribe = ({ className = "", onClose }) => {
+const RegisterStep2 = ({ touched, errors, values, handleChange, handleBlur, handleError }) => {
   return (
-    <div className={[styles.modalSubscribe2, className].join(" ")}>
-      <div className={styles.content}>
-        <div className={styles.step2Of}>Step 2 of 3</div>
+      <>
         <div className={styles.textAndSupportingText}>
           <div className={styles.text}>Card Details</div>
           <div className={styles.supportingText}>
@@ -25,46 +22,24 @@ const ModalSubscribe = ({ className = "", onClose }) => {
                 bordered={true}
               />
             </div>
-            <div className={styles.inputWithLabel1}>
-              <div className={styles.label}>Expiry</div>
-              <Input
-                className={styles.input1}
-                placeholder="06 / 2024"
-                bordered={true}
-              />
-            </div>
           </div>
           <div className={styles.row}>
-            <div className={styles.inputWithLabel}>
-              <div className={styles.label}>Card number</div>
-              <Input
-                className={styles.input}
-                placeholder="1234 1234 1234 1234"
-                bordered={true}
+            <div>
+              <CreditCardInput 
+                cardNumberInputProps={{ value: values.cardNumber, onchange: handleChange("cardNumber"), onblur: handleBlur("cardNumber"), onerror: handleError("cardNumber") }}
+                cardExpiryInputProps={{ value: values.expiry, onchange: handleChange("expiry"), onblur: handleBlur("expiry"), onerror: handleError("expiry") }}
+                cardCVCInputProps={{ value: values.cvc, onchange: handleChange("cvc"), onblur: handleBlur("cvc"), onerror: handleError("cvc") }}
+                inputComponent={Input}
+                inputClassName={styles.input}
               />
-            </div>
-            <div className={styles.inputWithLabel1}>
-              <div className={styles.label}>CVV</div>
-              <Input className={styles.input} bordered={true} />
+              {(!!errors.cardNumber && touched.cardNumber) && <span style={{ fontSize: "12px", color: "red" }}>{errors.cardNumber}</span>}
+              {(!!errors.expiry && touched.expiry) && <span style={{ fontSize: "12px", color: "red" }}>{errors.expiry}</span>}
+              {(!!errors.cvc && touched.cvc) && <span style={{ fontSize: "12px", color: "red" }}>{errors.cvc}</span>}
             </div>
           </div>
         </div>
-      </div>
-      <div className={styles.modalActions}>
-        <Button className={styles.buttonBase} type="default">
-          Cancel
-        </Button>
-        <Button className={styles.buttonBase} type="primary">
-          Next
-        </Button>
-      </div>
-    </div>
+      </>
   );
 };
 
-ModalSubscribe.propTypes = {
-  className: PropTypes.string,
-  onClose: PropTypes.func,
-};
-
-export default ModalSubscribe;
+export default memo(RegisterStep2);
