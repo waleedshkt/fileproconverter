@@ -1,0 +1,164 @@
+
+.subheading {
+    align-self: stretch;
+    position: relative;
+  }
+  .formHeading {
+    align-self: stretch;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    justify-content: center;
+    gap: var(--gap-5xl);
+  }
+  .label {
+    position: relative;
+    font-size: var(--font-size-sm);
+    line-height: 20px;
+    font-weight: 500;
+    color: var(--color-gray);
+    text-align: left;
+  }
+  .inputWithLabel {
+    align-self: stretch;
+    display: flex;
+    justify-content: flex-start;
+  }
+  .inputWithLabel {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: var(--gap-5xs);
+  }
+  .hintText {
+    align-self: stretch;
+    color: var(--color-slategray);
+    position: relative;
+    font-size: var(--font-size-xs);
+    line-height: 20px;
+    text-align: left;
+  }
+  .inputField {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: flex-start;
+    gap: var(--gap-5xs);
+  }
+  .inputField {
+    align-self: stretch;
+  }
+  .text4 {
+    position: relative;
+    font-size: var(--font-size-sm);
+    line-height: 24px;
+    font-weight: 600;
+    color: var(--white);
+    text-align: center;
+  }
+  .sendButton {
+    cursor: pointer;
+    border: 1px solid var(--color-coral);
+    padding: var(--padding-xs) var(--padding-xl);
+    background-color: var(--color-coral);
+    align-self: stretch;
+    border-radius: var(--br-200xl);
+    box-shadow: var(--shadow-xs);
+    box-sizing: border-box;
+    height: 44px;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+  }
+  .form,
+  .formSection,
+  .main {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  .form {
+    margin: 0;
+    border-radius: var(--br-xs);
+    width: 576px;
+    justify-content: flex-start;
+    gap: var(--gap-5xl);
+    max-width: 576px;
+  }
+  .formSection,
+  .main {
+    align-self: stretch;
+    justify-content: center;
+    gap: var(--gap-29xl);
+  }
+  .main {
+    flex: auto;
+    padding: var(--padding-77xl) var(--padding-93xl);
+    gap: var(--gap-45xl);
+    text-align: center;
+    font-size: var(--font-size-sm);
+    color: var(--color-gray);
+  }
+  .text7 {
+    position: relative;
+    line-height: 24px;
+    font-size: var(--font-size-xs);
+    font-weight: 500;
+    color: var(--color-dimgray-100);
+    text-align: left;
+  }
+  .appealerAppealFilerAuthPa {
+    position: relative;
+    background-color: var(--white);
+    width: 100%;
+    min-height: calc(100vh);
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+  }
+  @media screen and (max-width: 1200px) {
+    .main {
+      padding-top: var(--padding-49xl);
+      padding-left: var(--padding-61xl);
+      padding-right: var(--padding-61xl);
+      box-sizing: border-box;
+    }
+  }
+  @media screen and (max-width: 1050px) {
+    .main {
+      padding-left: var(--padding-29xl);
+      padding-right: var(--padding-29xl);
+      box-sizing: border-box;
+    }
+  }
+  @media screen and (max-width: 760px) {
+    .form {
+      width: 100%;
+      max-width: 760px;
+    }
+  }
+  @media screen and (max-width: 610px) {
+    .main {
+      padding-left: var(--padding-5xl);
+      padding-right: var(--padding-5xl);
+      box-sizing: border-box;
+      gap: var(--gap-29xl);
+      padding-top: var(--padding-29xl);
+    }
+  }
+  @media screen and (max-width: 430px) {
+    .main {
+      padding-top: var(--padding-5xl);
+      box-sizing: border-box;
+    }
+  }
+  @media screen and (max-width: 400px) {
+    .main {
+      padding-left: var(--padding-5xs);
+      padding-right: var(--padding-5xs);
+      box-sizing: border-box;
+    }
+  }
+  
