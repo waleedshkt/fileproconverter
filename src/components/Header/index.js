@@ -1,105 +1,143 @@
-import * as React from "react";
-import { memo, useState, useCallback } from "react";
-import "antd/dist/antd.min.css";
-import { Button } from "antd";
-import ModalSubscribe2 from "/";
-import PortalPopup from "./portal-popup";
-import SideMenu from "./side-menu";
-import PortalDrawer from "./portal-drawer";
-import PropTypes from "prop-types";
-import * as styles from "./header.module.css";
+import React, { memo, useCallback, useMemo } from "react";
+import { useHookstate as useState } from "@hookstate/core";
+import { Link, navigate } from "gatsby";
+import { Button, Dropdown, Space } from "antd";
+import { MenuOutlined, CrownOutlined, DownOutlined } from "@ant-design/icons";
+import SideMenu from "../SideDrawer/Menu";
+import PortalDrawer from "../SideDrawer/Portal";
+import * as styles from "./index.module.css";
 
-const Header = memo(({ className = "" }) => {
-  const [isModalSubscribe1Open, setModalSubscribe1Open] = useState(false);
-  const [isSideMenuOpen, setSideMenuOpen] = useState(false);
+import { isAuth, subscription } from "../../globalStates";
 
-  const openModalSubscribe1 = useCallback(() => {
-    setModalSubscribe1Open(true);
-  }, []);
+import Logo from "../../images/svg/logo.svg";
 
-  const closeModalSubscribe1 = useCallback(() => {
-    setModalSubscribe1Open(false);
-  }, []);
+import lazyLoad from "../../helpers/lazyLoad";
+const LoginModal = lazyLoad("Modals/Login");
+const RegisterModal = lazyLoad("Modals/Register");
+const SubscribedModal = lazyLoad("Modals/Subscribed");
 
-  const openSideMenu = useCallback(() => {
-    setSideMenuOpen(true);
-  }, []);
+const Header = ({  }) => {
+  const isAuth_ = useState(isAuth); //global
+  const { subscribed } = useState(subscription); //global
+  const openLoginModal = useState(false);
+  const openRegisterModal = useState(false);
+  const openSubscribedModal = useState(false);
+  const openSideMenu = useState(false);
 
-  const closeSideMenu = useCallback(() => {
-    setSideMenuOpen(false);
-  }, []);
+  const dropdownItems = useMemo(() => [
+    { key: "1", label: <Link to="/video-converter">Video Converter</Link> },
+    { key: "2", label: <Link to="/audio-converter">Audio Converter</Link> },
+    { key: "3", label: <Link to="/ebook-converter">E-book Converter</Link> },
+    { key: "4", label: <Link to="/image-converter">Image Converter</Link> },
+    { key: "5", label: <Link to="/archive-converter">Archive Converter</Link> },
+    { key: "6", label: <Link to="/vector-converter">Vector Converter</Link> },
+    { key: "7", label: <Link to="/document-converter">Document Converter</Link> },
+    { key: "8", label: <Link to="/convert/video-to-mp3">video to MP3</Link> },
+    { key: "9", label: <Link to="/pdf-converter">PDf Converter</Link> },
+    { key: "10", label: <Link to="/convert/image-to-pdf">Image to PDF</Link> },
+    { key: "11", label: <Link to="/convert/image-to-word">Image to Word</Link> }
+  ], []);
+
+  const toggleRegisterModal = useCallback(open => () => openRegisterModal?.set(open), []);
+
+  const toggleLoginModal = useCallback(open => () => openLoginModal?.set(open), []);
+
+  const toggleSubscribedModal = useCallback(open => () => openSubscribedModal?.set(open), []);
+
+  const toggleSideMenu = useCallback(open => () => openSideMenu?.set(open), []);
 
   return (
     <>
-      <header className={[styles.header, className].join(" ")}>
+      <header className={styles.header}>
         <div className={styles.container}>
           <div className={styles.navLeft}>
             <div className={styles.logoWrap}>
               <div className={styles.logomark}>
-                <img className={styles.contentIcon} alt="" src="/content.svg" />
+                <Logo className={styles.contentIcon} alt="FileProConverter.com" onClick={() => navigate("/")} />
               </div>
-              <b className={styles.anyConvertercom}>Any-Converter.com</b>
+              <b className={styles.anyConvertercom}>FileProConverter.com</b>
             </div>
             <div className={styles.dropdownHeaderNavigationTri}>
-              <div className={styles.button}>
-                <div className={styles.buttonBase}>
-                  <div className={styles.text}>Categories</div>
-                  <img
-                    className={styles.chevronDownIcon}
-                    alt=""
-                    src="/chevrondown.svg"
-                  />
-                </div>
-              </div>
+              <Dropdown
+                menu={{dropdownItems}}
+              >
+                <a onClick={e => e.preventDefault()}>
+                  <Space>
+                    Tools
+                    <DownOutlined />
+                  </Space>
+                </a>
+              </Dropdown>
             </div>
           </div>
-          <div className={styles.mobileMenuBtn} onClick={openSideMenu}>
-            <div className={styles.buttonBase1}>
-              <div className={styles.text1}>Book demo</div>
-            </div>
-          </div>
+          <Button 
+            type="text"
+            className={styles.mobileMenuBtn} 
+            onClick={toggleSideMenu(true)}
+            icon={(
+              <MenuOutlined />
+            )}
+          />
           <div className={styles.desktopNavBtns}>
-            <Button
-              className={styles.button1}
-              type="text"
-              onClick={openModalSubscribe1}
-            >
-              Log in
-            </Button>
-            <Button
-              className={styles.button1}
-              type="primary"
-              onClick={openModalSubscribe1}
-            >
-              Go Premium
-            </Button>
+            {(!isAuth_?.get() || (isAuth?.get() && !subscribed?.get())) ? (
+              <>
+                <Button
+                  className={styles.button1}
+                  type="text"
+                  onClick={toggleLoginModal(true)}
+                >
+                  Log in
+                </Button>
+                <Button
+                  className={styles.button1}
+                  type="primary"
+                  onClick={toggleRegisterModal(true)}
+                >
+                  Go Premium
+                </Button>
+              </>
+            ) : (
+              <Button 
+                className={styles.button1}
+                type="text"
+                onClick={toggleSubscribedModal(true)}
+                icon={(
+                  <CrownOutlined />
+                )}
+              />
+            )}
           </div>
         </div>
       </header>
-      {isModalSubscribe1Open && (
-        <PortalPopup
-          overlayColor="rgba(127, 86, 217, 0.3)"
-          placement="Centered"
-          onOutsideClick={closeModalSubscribe1}
-        >
-          <ModalSubscribe2 onClose={closeModalSubscribe1} />
-        </PortalPopup>
+      {openLoginModal?.get() && (
+        <LoginModal 
+          open={openLoginModal?.get()}
+          onClose={toggleLoginModal(false)}
+        />
       )}
-      {isSideMenuOpen && (
+      {openRegisterModal?.get() && (
+        <RegisterModal 
+          open={openRegisterModal?.get()}
+          onClose={toggleRegisterModal(false)}
+        />
+      )}
+      {openSubscribedModal?.get() && (
+        <SubscribedModal 
+          open={openSubscribedModal?.get()}
+          onClose={toggleSubscribedModal(false)}
+        />
+      )}
+      {openSideMenu?.get() && (
         <PortalDrawer
           overlayColor="rgba(127, 86, 217, 0.3)"
           placement="Right"
-          onOutsideClick={closeSideMenu}
+          onOutsideClick={toggleSideMenu(false)}
         >
-          <SideMenu onClose={closeSideMenu} />
+          <SideMenu onClose={toggleSideMenu(false)} />
         </PortalDrawer>
       )}
     </>
   );
-});
-
-Header.propTypes = {
-  className: PropTypes.string,
 };
 
-export default Header;
+export default memo(Header);
