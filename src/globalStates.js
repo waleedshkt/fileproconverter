@@ -8,6 +8,12 @@ export const subscription = createState({
     cardEnding: ""
 });
 
+export const selection = createState({
+    from: "",
+    to: "",
+    files: []
+});
+
 export const misc = createState({
     isLoading: false, 
     message: { type: "error", content: "" }
