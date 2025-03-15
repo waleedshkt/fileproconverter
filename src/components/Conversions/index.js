@@ -1,32 +1,17 @@
-import * as React from "react";
-import { memo } from "react";
+import React, { memo } from "react";
 import { Link } from "gatsby";
-import PropTypes from "prop-types";
-import * as styles from "./conversions.module.css";
+import * as styles from "./index.module.css";
 
-const Conversions = memo(({ className = "" }) => {
+// linkArr -> [{ name, link }]
+const Conversions = ({ linksArr, heading }) => {
   return (
-    <div className={[styles.popularConversions, className].join(" ")}>
-      <div className={styles.popularConversions1}>Popular Conversions</div>
+    <div className={styles.popularConversions}>
+      <div className={styles.popularConversions1}>{heading}</div>
       <div className={styles.pdfToJpgParent}>
-        <Link className={styles.pdfToJpg} to="/add-more-files">
-          PDF to JPG
-        </Link>
-        <b className={styles.pdfToJpg1}>PDF to JPG</b>
-        <b className={styles.pdfToJpg1}>PDF to JPG</b>
-        <b className={styles.pdfToJpg1}>PDF to JPG</b>
-        <b className={styles.pdfToJpg1}>PDF to JPG</b>
-        <b className={styles.pdfToJpg1}>PDF to JPG</b>
-        <b className={styles.pdfToJpg1}>PDF to JPG</b>
-        <b className={styles.pdfToJpg1}>PDF to JPG</b>
-        <b className={styles.pdfToJpg1}>PDF to JPG</b>
+        {linksArr.map((o, i) => <Link className={i < 1 ? styles.pdfToJpg : styles.pdfToJpg1} to={o.link}>{o.name}</Link>)}
       </div>
     </div>
   );
-});
-
-Conversions.propTypes = {
-  className: PropTypes.string,
 };
 
-export default Conversions;
+export default memo(Conversions);
