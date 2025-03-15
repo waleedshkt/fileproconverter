@@ -5,9 +5,12 @@ import { Button, List } from "antd";
 import { CloseOutlined } from "@ant-design/icons";
 import * as styles from "./side-menu.module.css";
 
+import { isAuth, subscription } from "../../../globalStates";
+
 import lazyLoad from "../../../helpers/lazyLoad";
 const LoginModal = lazyLoad("Modals/Login");
 const RegisterModal = lazyLoad("Modals/Register");
+const SubscribedModal = lazyLoad("Modals/Subscribed");
 
 const FILE_CONVERTERS_LIST = [
   { name: "Video Converter", link: "/video-converter" },
@@ -24,12 +27,17 @@ const FILE_CONVERTERS_LIST = [
 ];
 
 const SideMenu = ({ onClose }) => {
+  const isAuth_ = useState(isAuth); //global
+  const { subscribed } = useState(subscription); //global
   const openLoginModal = useState(false);
   const openRegisterModal = useState(false);
+  const openSubscribedModal = useState(false);
 
   const toggleRegisterModal = useCallback(open => () => openRegisterModal?.set(open), []);
 
   const toggleLoginModal = useCallback(open => () => openLoginModal?.set(open), []);
+
+  const toggleSubscribedModal = useCallback(open => () => openSubscribedModal?.set(open), []);
 
   useEffect(() => {
     const scrollAnimElements = document.querySelectorAll(
@@ -82,30 +90,50 @@ const SideMenu = ({ onClose }) => {
           />  
         </div>
         <div className={styles.navigationActions}>
-          <Button 
-            type="text"
-            className={styles.buttonBase5} 
-            onClick={toggleLoginModal(true)}
-          >
-            <span className={styles.text1}>Log in</span>
-          </Button>
-          <Button 
-            type="primary"
-            className={styles.buttonBase6} 
-            onClick={toggleRegisterModal(true)}
-          >
-            <span className={styles.text6}>Go Premium</span>
-          </Button>
+          {(!isAuth_?.get() || (isAuth_?.get() && !subscribed?.get())) ? (
+            <>
+              <Button 
+                type="text"
+                className={styles.buttonBase5} 
+                onClick={toggleLoginModal(true)}
+              >
+                <span className={styles.text1}>Log in</span>
+              </Button>
+              <Button 
+                type="primary"
+                className={styles.buttonBase6} 
+                onClick={toggleRegisterModal(true)}
+              >
+                <span className={styles.text6}>Go Premium</span>
+              </Button>
+            </>
+          ) : (
+            <Button 
+              type="primary"
+              className={styles.buttonBase6} 
+              onClick={toggleSubscribedModal(true)}
+            >
+              <span className={styles.text6}>View Account</span>
+            </Button>
+          )}
         </div>
       </div>
       {openLoginModal?.get() && (
         <LoginModal 
+          open={openLoginModal?.get()}
           onClose={toggleLoginModal(false)}
         />
       )}
       {openRegisterModal?.get() && (
         <RegisterModal 
+          open={openRegisterModal?.get()}
           onClose={toggleRegisterModal(false)}
+        />
+      )}
+      {openSubscribedModal?.get() && (
+        <SubscribedModal 
+          open={openSubscribedModal?.get()}
+          onClose={toggleSubscribedModal(false)}
         />
       )}
     </>
