@@ -1,49 +1,47 @@
-import * as React from "react";
-import { memo } from "react";
-import "antd/dist/antd.min.css";
-import { Button } from "antd";
-import PropTypes from "prop-types";
-import * as styles from "./formats-overview.module.css";
+import React, { memo, useCallback, useMemo } from "react";
+import { useHookstate as useState } from "@hookstate/core";
+import { Button, Tabs } from "antd";
+import * as styles from "./index.module.css";
 
-const FormatsOverview = memo(({ className = "" }) => {
+// fromToArr -> [from, to]
+// info -> {[from]: {introduction: "", ...}, [to]: ...}
+
+const FormatsOverview = ({ fromToArr, info }) => {
+  const currentTab = useState("1");
+  const currentSection = useState("Introduction");
+
+  const handleTabChange = useCallback(key => currentTab?.set(key), []);
+
+  const tabItems = useMemo(() => fromToArr.map(() => ({
+    key: (i + 1).toString(),
+    label: el,
+    children: null
+  })), [fromToArr]);
+
   return (
-    <div className={[styles.formatsOverview, className].join(" ")}>
-      <div className={styles.subNavigation}>
-        <Button type="primary">Introdiction</Button>
-        <Button type="text">Use Cases</Button>
-        <Button type="text">How to Use</Button>
-        <Button type="text">Benefits</Button>
-        <Button type="text">Drawbacks</Button>
-      </div>
+    <div className={styles.formatsOverview}>
       <div className={styles.formatOverview}>Format Overview</div>
-      <div className={styles.tabs}>
-        <div className={styles.tabButtonBase}>
-          <div className={styles.content}>
-            <div className={styles.text}>Format 1</div>
-          </div>
-          <div className={styles.bottomBorder} />
-        </div>
-        <div className={styles.tabButtonBase1}>
-          <div className={styles.content}>
-            <div className={styles.text}>Format 2</div>
-          </div>
-          <div className={styles.bottomBorder1} />
-        </div>
+      {fromToArr?.length > 1 && (
+        <Tabs 
+          defaultActiveKey="1"
+          items={tabItems}
+          onChange={handleTabChange}
+        />
+      )}
+      <div className={styles.subNavigation}>
+        <Button type={currentSection?.get() === "introduction" ? "Primary" : "text"} onClick={handleSectionChange("introduction")}>Introdiction</Button>
+        <Button type={currentSection?.get() === "use-cases" ? "Primary" : "text"} onClick={handleSectionChange("use-cases")}>Use Cases</Button>
+        <Button type={currentSection?.get() === "how-to-use" ? "Primary" : "text"} onClick={handleSectionChange("how-to-use")}>How to Use</Button>
+        <Button type={currentSection?.get() === "benefits" ? "Primary" : "text"} onClick={handleSectionChange("benefits")}>Benefits</Button>
+        <Button type={currentSection?.get() === "drawbacks" ? "Primary" : "text"} onClick={handleSectionChange("drawbacks")}>Drawbacks</Button>
       </div>
       <div className={styles.fkjfkjgfdgFgkjfdkgjfdGfdkjgfContainer}>
-        <p className={styles.fkjfkjgfdgFgkjfdkgjfdGfdkjgf}>
-          fkjfkjgfdg fgkjfdkgjfd gfdkjgfdg fdgjfdgf dgkfdjgfkd gfdkjgdfgfg
+        <p>
+          {info[fromToArr[parseInt(currentTab?.get()) - 1]][currentSection?.get()]}
         </p>
-        <p className={styles.fkjfkjgfdgFgkjfdkgjfdGfdkjgf}>dfksfkfg</p>
-        <p className={styles.fkjfkjgfdgFgkjfdkgjfdGfdkjgf}>fdgjfdkjgfdkjgf</p>
-        <p className={styles.gfgkfjkgjfkdgkj}>gfgkfjkgjfkdgkj</p>
       </div>
     </div>
   );
-});
-
-FormatsOverview.propTypes = {
-  className: PropTypes.string,
 };
 
-export default FormatsOverview;
+export default memo(FormatsOverview);
