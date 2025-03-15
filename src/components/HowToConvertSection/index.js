@@ -1,12 +1,11 @@
-import * as React from "react";
-import { memo } from "react";
-import PropTypes from "prop-types";
-import * as styles from "./how-to-convert.module.css";
+import React,{ memo } from "react";
+import * as styles from "./index.module.css";
 
-const HowToConvert = memo(({ className = "" }) => {
+const HowToConvert = ({ from = "", to = "" }) => {
+  
   return (
-    <div className={[styles.howToConvert, className].join(" ")}>
-      <div className={styles.howToConvert1}>How to Convert?</div>
+    <div className={styles.howToConvert}>
+      <div className={styles.howToConvert1}>How to Convert{(!!from && !!to) ? ` from ${from} to ${to}` : ((!!from && !Boolean(to)) ? ` from ${from}` : ``)}?</div>
       <div className={styles.clickTheSelectContainer}>
         <ol className={styles.clickTheSelectFilesButto}>
           <li className={styles.selectTheFormatYouWantThe}>
@@ -41,10 +40,6 @@ const HowToConvert = memo(({ className = "" }) => {
       </div>
     </div>
   );
-});
-
-HowToConvert.propTypes = {
-  className: PropTypes.string,
 };
 
-export default HowToConvert;
+export default memo(HowToConvert);
