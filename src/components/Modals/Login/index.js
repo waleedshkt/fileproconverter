@@ -34,10 +34,20 @@ const LoginModal = ({ open, onClose }) => {
         if(!res) {
             throw res;
         }else { //authenticated
+            
+            const { photoURL } = res;
+    
+            // fetch params from photo url
+            let params = new URL(photoURL).searchParams() || {};
+            if(Object.keys(params)) { // subscribed
+                // set params
+
+                isAuth_.set(true);
+            }else {
+              await signOut();
+            }
 
             misc_.isLoading.set(false);
-            isAuth_.set(true);
-
             onClose();
 
         }
