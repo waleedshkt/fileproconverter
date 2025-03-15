@@ -1,30 +1,25 @@
-import * as React from "react";
-import { memo, useState, useCallback } from "react";
-import "antd/dist/antd.min.css";
+import React, { memo, useCallback } from "react";
+import { useHookstate as useState } from "@hookstate/core";
 import { Button } from "antd";
-import ModalSubscribe2 from "/";
-import PortalPopup from "./portal-popup";
-import PropTypes from "prop-types";
-import * as styles from "./lower-hero.module.css";
+import * as styles from "./index.module.css";
 
-const LowerHero = memo(({ className = "" }) => {
-  const [isModalSubscribe1Open, setModalSubscribe1Open] = useState(false);
+import lazyLoad from "../../helpers/lazyLoad";
+const LoginModal = lazyLoad("Modals/Login");
+const RegisterModal = lazyLoad("Modals/Register");
 
-  const openModalSubscribe1 = useCallback(() => {
-    setModalSubscribe1Open(true);
-  }, []);
-
-  const closeModalSubscribe1 = useCallback(() => {
-    setModalSubscribe1Open(false);
-  }, []);
+const LowerHero = ({ }) => {
+  const openLoginModal = useState(false);
+    const openRegisterModal = useState(false);
+  
+    const toggleRegisterModal = useCallback(open => () => openRegisterModal?.set(open), []);
+  
+    const toggleLoginModal = useCallback(open => () => openLoginModal?.set(open), []);
 
   return (
     <>
       <div className={[styles.lowerHero, className].join(" ")}>
         <div className={styles.headingAndSupportingText}>
-          <div
-            className={styles.heading}
-          >{`Unlimited file conversions. No ads. `}</div>
+          <div className={styles.heading}>Unlimited file conversions. No ads.</div>
           <div className={styles.supportingText}>
             Convert as much files as you like in different formats for only $12
             per year subscription.
@@ -34,34 +29,33 @@ const LowerHero = memo(({ className = "" }) => {
           <Button
             className={styles.button}
             type="default"
-            onClick={openModalSubscribe1}
+            onClick={toggleLoginModal(true)}
           >
             Login
           </Button>
           <Button
             className={styles.button}
             type="primary"
-            onClick={openModalSubscribe1}
+            onClick={toggleRegisterModal(true)}
           >
             Go Premium
           </Button>
         </div>
       </div>
-      {isModalSubscribe1Open && (
-        <PortalPopup
-          overlayColor="rgba(127, 86, 217, 0.3)"
-          placement="Centered"
-          onOutsideClick={closeModalSubscribe1}
-        >
-          <ModalSubscribe2 onClose={closeModalSubscribe1} />
-        </PortalPopup>
+      {openLoginModal?.get() && (
+        <LoginModal
+          open={openLoginModal?.get()} 
+          onClose={toggleLoginModal(false)}
+        />
+      )}
+      {openRegisterModal?.get() && (
+        <RegisterModal 
+          open={openRegisterModal?.get()}
+          onClose={toggleRegisterModal(false)}
+        />
       )}
     </>
   );
-});
-
-LowerHero.propTypes = {
-  className: PropTypes.string,
 };
 
-export default LowerHero;
+export default memo(LowerHero);
