@@ -2,20 +2,20 @@ import React, { memo, useContext, useCallback, useEffect } from "react";
 import { useHookstate as useState } from "@hookstate/core";
 import { useFormik } from "formik";
 import { string as yupString, object as yupObject, ref as yupRef } from "yup";
-import { Navigate, useSearchParams } from "react-router-dom";
+import { navigate } from "gatsby";
 import { Input, message } from "antd";
 import { Loader } from "../../components/Loader";
 import styles from "./index.module.css";
 
 import { AuthContext } from "../../helpers/auth/firebase/user";
 
-const AuthActionPage = () => {
-    const [ searchParams ] = useSearchParams();
+const AuthActionPage = ({ location }) => {
     const { confirmPasswordReset, verifyPasswordResetCode } = useContext(AuthContext);
 
     const isCodeVerified = useState(null);
     const isReset = useState(false);
 
+    const searchParams = new URLSearchParams(location?.search);
     const mode = searchParams.get("mode");
     const actionCode = searchParams.get("oobCode");
 
@@ -69,7 +69,7 @@ const AuthActionPage = () => {
 
     if(!mode || !actionCode) {
         window.alert(mode, actionCode);
-        return <Navigate to="/" replace />;
+        return navigate("/");
     }
 
     if(mode === "resetPassword") { 
