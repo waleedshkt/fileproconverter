@@ -1,6 +1,7 @@
 import React, { memo, useCallback, useMemo } from "react";
 import { useHookstate as useState } from "@hookstate/core";
 import { Link, navigate } from "gatsby";
+import { StaticImage } from "gatsby-plugin-image";
 import { Button, Dropdown, Space } from "antd";
 import { MenuOutlined, CrownOutlined, DownOutlined } from "@ant-design/icons";
 import SideMenu from "../SideDrawer/Menu";
@@ -8,8 +9,6 @@ import PortalDrawer from "../SideDrawer/Portal";
 import * as styles from "./index.module.css";
 
 import { isAuth, subscription } from "../../globalStates";
-
-import Logo from "../../images/svg/logo.svg";
 
 import lazyLoad from "../../helpers/lazyLoad";
 const LoginModal = lazyLoad("Modals/Login");
@@ -51,9 +50,15 @@ const Header = ({  }) => {
       <header className={styles.header}>
         <div className={styles.container}>
           <div className={styles.navLeft}>
-            <div className={styles.logoWrap}>
+            <div className={styles.logoWrap} aria-label="FileProConverter.com" onClick={() => navigate("/")}>
               <div className={styles.logomark}>
-                <Logo className={styles.contentIcon} alt="FileProConverter.com" onClick={() => navigate("/")} />
+                <StaticImage 
+                  layout="fullWidth"
+                  objectFit="contain"
+                  className={styles.contentIcon} 
+                  alt="FileProConverter.com" 
+                  src="../../images/logo.png" 
+                />
               </div>
               <b className={styles.anyConvertercom}>FileProConverter.com</b>
             </div>

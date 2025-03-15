@@ -1,8 +1,7 @@
 import React, { memo } from "react";
 import { Link, navigate } from "gatsby";
+import { StaticImage } from "gatsby-plugin-image";
 import * as styles from "./index.module.css";
-
-import Logo from "../../images/svg/logo.svg";
 
 const Footer = ({ }) => (
     <footer className={styles.footer}>
@@ -100,9 +99,15 @@ const Footer = ({ }) => (
       <div className={styles.container1}>
         <div className={styles.divider} />
         <div className={styles.content1}>
-          <div className={styles.logoWrap}>
+          <div className={styles.logoWrap} aria-label="FIleProConverter.com" onClick={() => navigate("/")}>
             <div className={styles.logomark}>
-              <Logo className={styles.contentIcon} alt="FileProConverter.com" onClick={() => navigate("/")} />
+              <StaticImage 
+                layout="fullWidth"
+                objectFit="contain"
+                className={styles.contentIcon} 
+                alt="FileProConverter.com" 
+                src="../../images/logo.png" 
+              />
             </div>
             <b className={styles.anyConvertercom}>FileProConverter.com</b>
           </div>
