@@ -15,7 +15,7 @@ const Step3 = lazyLoad("Modals/Register/Step3");
 const SubscribedModal = lazyLoad("Modals/Subscribed");
 
 const RegisterModal = ({ open, onClose }) => {
-    const { registerWithEmail } = useContext(AuthContext);
+    const { registerWithEmail, getUserID } = useContext(AuthContext);
 
     const isAuth_ = useState(isAuth); //global
     const misc_ = useState(misc); //global
@@ -65,21 +65,26 @@ const RegisterModal = ({ open, onClose }) => {
             }
     
         }catch(er) {
+
+          if(er?.code === 'auth/email-already-in-use' && !subscribed?.get()) {
+            currentStep?.set(2);
+            misc_.isLoading.set(false);
+          }else {
+            let error = "";
+
+            if(er?.code === "auth/invalid-credential") {
+                error = "Invalid username or password.";
+            }else if(er?.code === 'auth/email-already-in-use') {
+                error = "You are already subscribed. Please log in";
+            }
     
-          let error = "";
-    
-          if(er?.code === "auth/invalid-credential") {
-            error = "Invalid username or password.";
-          }else if(er?.code === 'auth/email-already-in-use') {
-            error = "You are already registered. Please log in";
+            console.error(er?.message || er);
+            
+            misc_.set({
+                isLoading: false,
+                message: { type: "error", content: error || "Failed to authenticate. Please try again" }
+            });
           }
-    
-          console.error(er?.message || er);
-          
-          misc_.set({
-            isLoading: false,
-            message: { type: "error", content: error || "Failed to authenticate. Please try again" }
-          });
         }
     }, []);
 
@@ -96,7 +101,7 @@ const RegisterModal = ({ open, onClose }) => {
                     let [month, year] = values.expiry.split("/");
                     const args = {
                         sellerId: process.env.GATSBY_2CHECKOUT_ACCOUNT_NUMBER,
-                        publishableKey: process.env.GATBY_2CHECKOUT_PUBLISHABLE_API_KEY,
+                        publishableKey: process.env.GATSBY_2CHECKOUT_PUBLISHABLE_API_KEY,
                         ccNo: values.cardNumber,
                         cvv: values.cvc,
                         expMonth: month,
@@ -107,7 +112,8 @@ const RegisterModal = ({ open, onClose }) => {
                         async (data) => { //success callback
 
                             // submit to the lambda for processing
-                            const res = await processPayment({ ...values, token: data.response.token.token });
+                            const uid = getUserID();
+                            const res = await processPayment({ ...values, token: data.response.token.token, firebaseID: uid });
 
                         }, 
                         (data) => { //error callback
