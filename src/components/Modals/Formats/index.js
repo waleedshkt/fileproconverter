@@ -1,57 +1,129 @@
-import * as React from "react";
-import "antd/dist/antd.min.css";
-import { Button } from "antd";
-import PropTypes from "prop-types";
-import * as styles from "./dropdown-formats.module.css";
+import React, { memo, useCallback } from "react";
+import { useHookstate as useState } from "@hookstate/core";
+import { Modal, Button } from "antd";
+import * as styles from "./index.module.css";
 
-const DropdownFormats = ({ className = "", onClose }) => {
+import formatsCategories from "../../../data/formats-categories.json";
+import formatsFromTo from "../../../data/formats-from-to.json";
+
+const FormatsModal = ({ open, onClose, isFrom, from, to, handleFormatSelect }) => {
+  //-------------------------------------------------------------------------
+  const getInitialCategory = (isFrom_, from_, to_) => {
+    let sel = (isFrom_ ? from_ : to_);
+    let cat;
+
+    if(sel) {
+
+      Object.entries(formatsCategories).some(([c, ar], i) => {
+        if(ar.includes(sel)) {
+          cat = c;
+          return true;
+        }
+      });
+
+      return cat;
+    }else {
+      return "Archive";
+    }
+  }; 
+  const currentCategory = useState(getInitialCategory(isFrom, from, to));
+  //-------------------------------------------------------------------------
+
+  const handleOnHoverCategory = useCallback(category => () => currentCategory?.set(category), []);
+  
+  const renderCategories = useCallback(() => {
+    let cat = [];
+
+    if((!Boolean(from) && !Boolean(to)) || (isFrom && (!!from && !Boolean(to)))) { // when none or only 'from' selected
+      cat = Object.keys(formatsCategories);
+    }else if(!isFrom && ((!!from && !Boolean(to)) || (!!from && !!to))) { // when open from 'to' and either only 'from' selected or both
+      Object.entries(formatsCategories).forEach(([c, fArr], i) => {
+        fArr.some((f, j) => {
+          if(formatsFromTo[from].from.includes(f)) {
+            cat.push(c);
+            return true;
+          }
+        });
+      });
+
+    }else if(isFrom && ((!!to && !Boolean(from)) || (!!to && !!from))) { // when open from 'from' and either only 'to' is selected or both
+      Object.entries(formatsCategories).forEach(([c, fArr], i) => {
+        fArr.some((f, j) => {
+          if(formatsFromTo[f].from.includes(to)) {
+            cat.push(c);
+            return true;
+          }
+        });
+      });
+    }
+    
+    return cat.map((c, i) => (
+      <Button 
+        key={c}
+        className={styles.buttonBase} 
+        type={currentCategory?.get() === c ? "primary" : "text"}
+        onMouseOver={handleOnHoverCategory(c)}
+      >
+        {c}
+      </Button>
+    ));
+
+  }, [
+    formatsCategories, 
+    formatsFromTo,
+    currentCategory?.get(), 
+    handleOnHoverCategory,
+    isFrom,
+    from,
+    to
+  ]);
+
+  const renderFormats = useCallback(() => {
+    let arr = [];
+
+    if((!Boolean(from) && !Boolean(to)) || (isFrom && (!!from && !Boolean(to)))) { // when none or only 'from' selected
+      arr = formatsCategories[currentCategory?.get()];
+    }else if(!isFrom && ((!!from && !Boolean(to)) || (!!from && !!to))) { // when open from 'to' and either only 'from' selected or both
+      arr = formatsCategories[currentCategory?.get()].filter((f, i) => formatsFromTo[from].from.includes(f));
+    }else if(isFrom && ((!!to && !Boolean(from)) || (!!to && !!from))) { // when open from 'from' and either only 'to' is selected or both
+      arr = formatsCategories[currentCategory?.get()].filter((f, i) => formatsFromTo[f].from.includes(to));
+    }
+    
+    return arr.sort().map((f, i) => (
+      <Button 
+        key={f} 
+        type={((isFrom && !!from && from === f) || (!isFrom && !!to && to === f)) ? "primary" : "text"}
+        onClick={handleFormatSelect(f, isFrom)}
+      >
+        {f}
+      </Button>
+    ));
+  }, [
+    formatsCategories, 
+    formatsFromTo,
+    currentCategory?.get(), 
+    handleFormatSelect, 
+    isFrom, 
+    from, 
+    to
+  ]);
+
   return (
-    <div className={[styles.dropdownFormats, className].join(" ")}>
+    <Modal 
+      open={open}
+      closable
+      onClose={onClose}
+      footer={null}
+      className={styles.dropdownFormats}
+    >
       <div className={styles.buttonBaseParent}>
-        <Button className={styles.buttonBase} type="primary">
-          Archive
-        </Button>
-        <Button className={styles.buttonBase} type="text">
-          Audio
-        </Button>
-        <Button className={styles.buttonBase} type="text">
-          CAD
-        </Button>
-        <Button className={styles.buttonBase} type="text">
-          Document
-        </Button>
-        <Button className={styles.buttonBase} type="text">
-          Ebook
-        </Button>
-        <Button className={styles.buttonBase} type="text">
-          Image
-        </Button>
-        <Button className={styles.buttonBase} type="text">
-          Presentation
-        </Button>
-        <Button className={styles.buttonBase} type="text">
-          Spreadsheet
-        </Button>
-        <Button className={styles.buttonBase} type="text">
-          Vector
-        </Button>
-        <Button className={styles.buttonBase} type="text">
-          VIdeo
-        </Button>
+        {renderCategories()}
       </div>
       <div className={styles.buttonBaseGroup}>
-        <Button type="text">7Z</Button>
-        <Button type="primary">TAR.BZ2</Button>
-        <Button type="text">TAR.GZ</Button>
-        <Button type="text">TAR.GZ</Button>
+        {renderFormats()}
       </div>
-    </div>
+    </Modal>
   );
 };
 
-DropdownFormats.propTypes = {
-  className: PropTypes.string,
-  onClose: PropTypes.func,
-};
-
-export default DropdownFormats;
+export default memo(FormatsModal);
