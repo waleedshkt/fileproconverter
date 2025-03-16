@@ -38,7 +38,6 @@
     mix-blend-mode: multiply;
   }
   .nut {
-    width: 24px;
     position: relative;
   }
   .nutParent {
@@ -48,6 +47,9 @@
     align-items: center;
     justify-content: space-between;
     gap: var(--gap-0);
+  }
+  .progressBar {
+    width: "100%";
   }
   .badgeParent {
     display: flex;

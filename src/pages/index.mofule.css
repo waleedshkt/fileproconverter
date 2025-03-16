@@ -81,7 +81,7 @@
   flex-direction: row;
   align-items: center;
   justify-content: flex-start;
-  gap: 75px;
+  gap: 40px;
   z-index: 1;
   font-size: var(--text-md-semibold-size);
   color: var(--gray-500);
