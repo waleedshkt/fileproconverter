@@ -36,7 +36,7 @@ const FormatsOverview = ({ fromToArr, info }) => {
         <Button type={currentSection?.get() === "drawbacks" ? "Primary" : "text"} onClick={handleSectionChange("drawbacks")}>Drawbacks</Button>
       </div>
       <div className={styles.fkjfkjgfdgFgkjfdkgjfdGfdkjgfContainer}>
-        <p>
+        <p className={styles.text}>
           {info[fromToArr[parseInt(currentTab?.get()) - 1]][currentSection?.get()]}
         </p>
       </div>

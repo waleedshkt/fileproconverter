@@ -94,9 +94,13 @@
     font-family: var(--text-md-semibold);
   }
   
-  @media screen and (max-width: 420px) {
+  @media screen and (max-width: 596px) {
     .text {
       font-size: var(--text-sm-regular-size);
+    }
+
+    .formatOverview {
+      font-size: var(--text-md-semibold-size);
     }
   }
   
