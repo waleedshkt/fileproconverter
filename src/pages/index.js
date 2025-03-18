@@ -9,7 +9,6 @@ import AddMoreSection from "../components/AddMoreFilesSection";
 import HowToConvert from "../components/HowToConvertSection";
 import Conversions from "../components/Conversions";
 import FormatsOverview from "../components/FormatsOverview";
-import LowerHero from "../components/LowerHero";
 import Footer from "../components/Footer";
 import * as styles from "./index.module.css";
 
@@ -182,7 +181,6 @@ const Page = ({ data }) => {
               <div className={styles.ad4} />
             </div>
           </div>
-          <LowerHero />
         </main>
         <Footer />
       </div>

@@ -1,4 +1,4 @@
-import React, { memo } from "react";
+/* import React, { memo } from "react";
 import { Input } from "antd";
 import CreditCardInput from "react-credit-card-input";
 import * as styles from "./index.module.css";
@@ -43,3 +43,4 @@ const RegisterStep2 = ({ touched, errors, values, handleChange, handleBlur, hand
 };
 
 export default memo(RegisterStep2);
+ */

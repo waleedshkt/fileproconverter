@@ -1,4 +1,4 @@
-import React, { memo } from "react";
+/* import React, { memo } from "react";
 import { Input,  } from "antd";
 import * as styles from "./index.module.css";
 
@@ -44,3 +44,4 @@ const RegisterStep1 = ({ touched, errors, values, handleChange, handleBlur }) =>
 };
 
 export default memo(RegisterStep1);
+ */

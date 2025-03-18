@@ -8,19 +8,19 @@ import SideMenu from "../SideDrawer/Menu";
 import PortalDrawer from "../SideDrawer/Portal";
 import * as styles from "./index.module.css";
 
-import { isAuth, subscription } from "../../globalStates";
+/* import { isAuth, subscription } from "../../globalStates";
 
 import lazyLoad from "../../helpers/lazyLoad";
 const LoginModal = lazyLoad("Modals/Login");
 const RegisterModal = lazyLoad("Modals/Register");
-const SubscribedModal = lazyLoad("Modals/Subscribed");
+const SubscribedModal = lazyLoad("Modals/Subscribed"); */
 
 const Header = ({  }) => {
-  const isAuth_ = useState(isAuth); //global
-  const { subscribed } = useState(subscription); //global
-  const openLoginModal = useState(false);
-  const openRegisterModal = useState(false);
-  const openSubscribedModal = useState(false);
+  // const isAuth_ = useState(isAuth); //global
+  // const { subscribed } = useState(subscription); //global
+  // const openLoginModal = useState(false);
+  // const openRegisterModal = useState(false);
+  // const openSubscribedModal = useState(false);
   const openSideMenu = useState(false);
 
   const dropdownItems = useMemo(() => [
@@ -37,11 +37,11 @@ const Header = ({  }) => {
     { key: "11", label: <Link to="/convert/image-to-word">Image to Word</Link> }
   ], []);
 
-  const toggleRegisterModal = useCallback(open => () => openRegisterModal?.set(open), []);
+  // const toggleRegisterModal = useCallback(open => () => openRegisterModal?.set(open), []);
 
-  const toggleLoginModal = useCallback(open => () => openLoginModal?.set(open), []);
+  // const toggleLoginModal = useCallback(open => () => openLoginModal?.set(open), []);
 
-  const toggleSubscribedModal = useCallback(open => () => openSubscribedModal?.set(open), []);
+  // const toggleSubscribedModal = useCallback(open => () => openSubscribedModal?.set(open), []);
 
   const toggleSideMenu = useCallback(open => () => openSideMenu?.set(open), []);
 
@@ -75,7 +75,7 @@ const Header = ({  }) => {
               </Dropdown>
             </div>
           </div>
-          <Button 
+          {/* <Button 
             type="text"
             className={styles.mobileMenuBtn} 
             onClick={toggleSideMenu(true)}
@@ -111,10 +111,10 @@ const Header = ({  }) => {
                 )}
               />
             )}
-          </div>
+          </div> */}
         </div>
       </header>
-      {openLoginModal?.get() && (
+      {/* {openLoginModal?.get() && (
         <LoginModal 
           open={openLoginModal?.get()}
           onClose={toggleLoginModal(false)}
@@ -131,7 +131,7 @@ const Header = ({  }) => {
           open={openSubscribedModal?.get()}
           onClose={toggleSubscribedModal(false)}
         />
-      )}
+      )} */}
       {openSideMenu?.get() && (
         <PortalDrawer
           overlayColor="rgba(127, 86, 217, 0.3)"

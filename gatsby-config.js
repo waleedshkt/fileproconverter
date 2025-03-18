@@ -7,7 +7,14 @@ module.exports = {
     siteUrl: `https://www.yourdomain.tld`
   },
   plugins: [
+    `gatsby-plugin-preact`,
     `gatsby-plugin-layout`,
+    {
+      resolve: `gatsby-plugin-robots-txt`,
+      options: {
+        sitemap: "https://fileproconverter.com/sitemap-index.xml"
+      }
+    },
     {
       resolve: `gatsby-plugin-brotli`,
       options: {

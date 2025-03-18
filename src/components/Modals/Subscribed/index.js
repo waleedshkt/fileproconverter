@@ -1,4 +1,4 @@
-import React, { memo, useCallback, useContext } from "react";
+/* import React, { memo, useCallback, useContext } from "react";
 import { useHookstate as useState } from "@hookstate/core";
 import { Modal } from "antd";
 import * as styles from "./index.module.css";
@@ -78,3 +78,4 @@ const SubscribedModal = ({ open, onClose }) => {
 };
 
 export default ModalSubscribe3;
+ */

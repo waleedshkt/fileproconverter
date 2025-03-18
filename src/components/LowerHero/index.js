@@ -3,18 +3,18 @@ import { useHookstate as useState } from "@hookstate/core";
 import { Button } from "antd";
 import * as styles from "./index.module.css";
 
-import lazyLoad from "../../helpers/lazyLoad";
+/* import lazyLoad from "../../helpers/lazyLoad";
 const LoginModal = lazyLoad("Modals/Login");
 const RegisterModal = lazyLoad("Modals/Register");
-
+ */
 const LowerHero = ({ }) => {
-  const openLoginModal = useState(false);
+    /* const openLoginModal = useState(false);
     const openRegisterModal = useState(false);
   
     const toggleRegisterModal = useCallback(open => () => openRegisterModal?.set(open), []);
   
     const toggleLoginModal = useCallback(open => () => openLoginModal?.set(open), []);
-
+ */
   return (
     <>
       <div className={[styles.lowerHero, className].join(" ")}>
@@ -25,7 +25,7 @@ const LowerHero = ({ }) => {
             per year subscription.
           </div>
         </div>
-        <div className={styles.actions}>
+        {/* <div className={styles.actions}>
           <Button
             className={styles.button}
             type="default"
@@ -40,9 +40,9 @@ const LowerHero = ({ }) => {
           >
             Go Premium
           </Button>
-        </div>
+        </div> */}
       </div>
-      {openLoginModal?.get() && (
+      {/* {openLoginModal?.get() && (
         <LoginModal
           open={openLoginModal?.get()} 
           onClose={toggleLoginModal(false)}
@@ -53,7 +53,7 @@ const LowerHero = ({ }) => {
           open={openRegisterModal?.get()}
           onClose={toggleRegisterModal(false)}
         />
-      )}
+      )} */}
     </>
   );
 };

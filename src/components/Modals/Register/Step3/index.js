@@ -1,4 +1,4 @@
-import React, { memo, useCallback, useMemo } from "react";
+/* import React, { memo, useCallback, useMemo } from "react";
 import { Input, Select } from "antd";
 import * as styles from "./index.module.css";
 
@@ -80,3 +80,4 @@ const RegisterStep3 = ({ touched, errors, values, handleChange, handleBlur, setF
 };
 
 export default memo(RegisterStep3);
+ */

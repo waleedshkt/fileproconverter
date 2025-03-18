@@ -5,12 +5,12 @@ import { Button, List } from "antd";
 import { CloseOutlined } from "@ant-design/icons";
 import * as styles from "./side-menu.module.css";
 
-import { isAuth, subscription } from "../../../globalStates";
+/* import { isAuth, subscription } from "../../../globalStates";
 
 import lazyLoad from "../../../helpers/lazyLoad";
 const LoginModal = lazyLoad("Modals/Login");
 const RegisterModal = lazyLoad("Modals/Register");
-const SubscribedModal = lazyLoad("Modals/Subscribed");
+const SubscribedModal = lazyLoad("Modals/Subscribed"); */
 
 const FILE_CONVERTERS_LIST = [
   { name: "Video Converter", link: "/video-converter" },
@@ -27,7 +27,7 @@ const FILE_CONVERTERS_LIST = [
 ];
 
 const SideMenu = ({ onClose }) => {
-  const isAuth_ = useState(isAuth); //global
+  /* const isAuth_ = useState(isAuth); //global
   const { subscribed } = useState(subscription); //global
   const openLoginModal = useState(false);
   const openRegisterModal = useState(false);
@@ -38,7 +38,7 @@ const SideMenu = ({ onClose }) => {
   const toggleLoginModal = useCallback(open => () => openLoginModal?.set(open), []);
 
   const toggleSubscribedModal = useCallback(open => () => openSubscribedModal?.set(open), []);
-
+ */
   useEffect(() => {
     const scrollAnimElements = document.querySelectorAll(
       "[data-animate-on-scroll]"
@@ -89,7 +89,7 @@ const SideMenu = ({ onClose }) => {
             className={styles.buttonBaseParent}
           />  
         </div>
-        <div className={styles.navigationActions}>
+        {/* <div className={styles.navigationActions}>
           {(!isAuth_?.get() || (isAuth_?.get() && !subscribed?.get())) ? (
             <>
               <Button 
@@ -116,9 +116,9 @@ const SideMenu = ({ onClose }) => {
               <span className={styles.text6}>View Account</span>
             </Button>
           )}
-        </div>
+        </div> */}
       </div>
-      {openLoginModal?.get() && (
+     {/*  {openLoginModal?.get() && (
         <LoginModal 
           open={openLoginModal?.get()}
           onClose={toggleLoginModal(false)}
@@ -135,7 +135,7 @@ const SideMenu = ({ onClose }) => {
           open={openSubscribedModal?.get()}
           onClose={toggleSubscribedModal(false)}
         />
-      )}
+      )} */}
     </>
   );
 };

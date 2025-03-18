@@ -1,4 +1,4 @@
-import React, { memo, useCallback, useContext } from "react";
+/* import React, { memo, useCallback, useContext } from "react";
 import { useHookstate as useState } from "@hookstate/core";
 import { useFormik } from "formik";
 import { object as yupObject, string as yupString } from "yup";
@@ -246,4 +246,4 @@ const RegisterModal = ({ open, onClose }) => {
     }
 };
 
-export default memo(RegisterModal);
+export default memo(RegisterModal); */

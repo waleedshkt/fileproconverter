@@ -89,7 +89,7 @@ const Footer = ({ }) => (
               <Link className={styles.buttonBase18} to="privacy-policy">
                 <div className={styles.text}>Privacy</div>
               </Link>
-              <Link className={styles.buttonBase18} to="/sitemap">
+              <Link className={styles.buttonBase18} to="/sitemap-index.xml">
                 <div className={styles.text}>Sitemap</div>
               </Link>
             </div>
