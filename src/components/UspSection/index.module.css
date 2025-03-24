@@ -126,6 +126,16 @@
       width: calc(100vw - 40px) !important;
       
     }
+    .highlySecure,
+    .autoDeletion,
+    .cloudRun {
+      left: 50%;
+      transform: translateX(-50%);
+      font-size: var(--text-md-semibold-size);
+    }
+    .withSsltcpEncryption {
+      font-size: var(--text-sm-regular-size);
+    }
     
   }
   
