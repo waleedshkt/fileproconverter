@@ -1978,29 +1978,6 @@
     "@pnpm/network.ca-file" "^1.0.1"
     config-chain "^1.1.11"
 
-"@prefresh/babel-plugin@^0.4.3":
-  version "0.4.4"
-  resolved "https://registry.yarnpkg.com/@prefresh/babel-plugin/-/babel-plugin-0.4.4.tgz#54872f9f938d3adff587037ab987c5e6449bdfee"
-  integrity sha512-/EvgIFMDL+nd20WNvMO0JQnzIl1EJPgmSaSYrZUww7A+aSdKsi37aL07TljrZR1cBMuzFxcr4xvqsUQLFJEukw==
-
-"@prefresh/core@^1.3.3":
-  version "1.5.3"
-  resolved "https://registry.yarnpkg.com/@prefresh/core/-/core-1.5.3.tgz#2050324e481b4cf6a7c6c7e3d2ec1de99e53d2c2"
-  integrity sha512-nDzxj0tA1/M6APNAWqaxkZ+3sTdPHESa+gol4+Bw7rMc2btWdkLoNH7j9rGhUb8SThC0Vz0VoXtq+U+9azGLHg==
-
-"@prefresh/utils@^1.1.2":
-  version "1.2.0"
-  resolved "https://registry.yarnpkg.com/@prefresh/utils/-/utils-1.2.0.tgz#cbdfe549b207041e38bb6cc382408b30cd24fec8"
-  integrity sha512-KtC/fZw+oqtwOLUFM9UtiitB0JsVX0zLKNyRTA332sqREqSALIIQQxdUCS1P3xR/jT1e2e8/5rwH6gdcMLEmsQ==
-
-"@prefresh/webpack@^3.3.4":
-  version "3.3.4"
-  resolved "https://registry.yarnpkg.com/@prefresh/webpack/-/webpack-3.3.4.tgz#742b70cc6e9a51ff9da80dc75eeccb38d18274aa"
-  integrity sha512-RiXS/hvXDup5cQw/267kxkKie81kxaAB7SFbkr8ppshobDEzwgUN1tbGbHNx6Uari0Ql2XByC6HIgQGpaq2Q7w==
-  dependencies:
-    "@prefresh/core" "^1.3.3"
-    "@prefresh/utils" "^1.1.2"
-
 "@rc-component/async-validator@^5.0.3":
   version "5.0.4"
   resolved "https://registry.yarnpkg.com/@rc-component/async-validator/-/async-validator-5.0.4.tgz#5291ad92f00a14b6766fc81735c234277f83e948"
@@ -4437,6 +4414,11 @@ dotenv-expand@^5.1.0:
   resolved "https://registry.yarnpkg.com/dotenv-expand/-/dotenv-expand-5.1.0.tgz#3fbaf020bfd794884072ea26b1e9791d45a629f0"
   integrity sha512-YXQl1DSa4/PQyRfgrv6aoNjhasp/p4qs9FjJ4q4cQk+8m4r6k4ZSiEyytKG8f8W9gi8WsQtIObNmKd+tMzNTmA==
 
+dotenv@^16.4.7:
+  version "16.4.7"
+  resolved "https://registry.yarnpkg.com/dotenv/-/dotenv-16.4.7.tgz#0e20c5b82950140aa99be360a8a5f52335f53c26"
+  integrity sha512-47qPchRCykZC03FhkYAhrvwU4xDBFIj1QPqaarj6mdM/hgUzfPHcpkHJOn3mJAufFeeAxAzeGsr5X0M4k6fLZQ==
+
 dotenv@^7.0.0:
   version "7.0.0"
   resolved "https://registry.yarnpkg.com/dotenv/-/dotenv-7.0.0.tgz#a2be3cd52736673206e8a85fb5210eea29628e7c"
@@ -5645,6 +5627,13 @@ gatsby-plugin-image@^3.14.0:
     objectFitPolyfill "^2.3.5"
     prop-types "^15.8.1"
 
+gatsby-plugin-layout@^4.14.0:
+  version "4.14.0"
+  resolved "https://registry.yarnpkg.com/gatsby-plugin-layout/-/gatsby-plugin-layout-4.14.0.tgz#0598fab385b73dd48be968c857878c56b500bc17"
+  integrity sha512-DG7Rva3hgbqgDxNT7JbJAGxwAPyhOppAorK1ioeyToLqa4BPWBWggIYD65Uuetkh5633Sx44q1L5ygpiB0QJkw==
+  dependencies:
+    "@babel/runtime" "^7.20.13"
+
 gatsby-plugin-manifest@^5.14.0:
   version "5.14.0"
   resolved "https://registry.yarnpkg.com/gatsby-plugin-manifest/-/gatsby-plugin-manifest-5.14.0.tgz#c5e701af508c534102f27c2c52b4cb41a7599bc5"
@@ -5672,16 +5661,6 @@ gatsby-plugin-page-creator@^5.14.0:
     gatsby-plugin-utils "^4.14.0"
     globby "^11.1.0"
     lodash "^4.17.21"
-
-gatsby-plugin-preact@^7.14.0:
-  version "7.14.0"
-  resolved "https://registry.yarnpkg.com/gatsby-plugin-preact/-/gatsby-plugin-preact-7.14.0.tgz#b5a0cea0f8c19acda8d0409f71821b6efae60ee1"
-  integrity sha512-ECFXnGz7Y4VP7hEnuShut+6KDLmZzmeakKECUxjJX5ZDN/H+FQux2NbGAXPaCNheMu7y58cSAlmx2nJNyURhag==
-  dependencies:
-    "@babel/runtime" "^7.20.13"
-    "@gatsbyjs/webpack-hot-middleware" "^2.25.3"
-    "@prefresh/babel-plugin" "^0.4.3"
-    "@prefresh/webpack" "^3.3.4"
 
 gatsby-plugin-purgecss@^6.2.1:
   version "6.2.1"
@@ -8507,16 +8486,6 @@ postcss@^8.2.15, postcss@^8.2.9, postcss@^8.3.5, postcss@^8.4.24:
     nanoid "^3.3.8"
     picocolors "^1.1.1"
     source-map-js "^1.2.1"
-
-preact-render-to-string@^6.5.13:
-  version "6.5.13"
-  resolved "https://registry.yarnpkg.com/preact-render-to-string/-/preact-render-to-string-6.5.13.tgz#cb9eb4a0df3576e7bfd78ef5f3d3bd57480e79ee"
-  integrity sha512-iGPd+hKPMFKsfpR2vL4kJ6ZPcFIoWZEcBf0Dpm3zOpdVvj77aY8RlLiQji5OMrngEyaxGogeakTb54uS2FvA6w==
-
-preact@^10.26.4:
-  version "10.26.4"
-  resolved "https://registry.yarnpkg.com/preact/-/preact-10.26.4.tgz#b514f4249453a4247c82ff6d1267d59b7d78f9f9"
-  integrity sha512-KJhO7LBFTjP71d83trW+Ilnjbo+ySsaAgCfXOXUlmGzJ4ygYPWmysm77yg4emwfmoz3b22yvH5IsVFHbhUaH5w==
 
 prebuild-install@^7.1.1:
   version "7.1.3"
