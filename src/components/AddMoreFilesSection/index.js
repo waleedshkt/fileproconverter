@@ -27,21 +27,23 @@ const AddMoreFiles = ({ from, to, files, beginUpload, handleDeleteFile, handleUp
   return (
     <div className={styles.addMoreFiles}>
       <div className={styles.frameParent}>
-        <div className={styles.buttonBaseParent}>
-          <Upload
-            showUploadList={false}
-            beforeUpload={beforeUpload}
-            fileList={files}
-          >
-            <Button
-              className={styles.buttonBase}
-              type="default"
-              icon={<PlusOutlined />}
+        {!beginUpload && (
+          <div className={styles.buttonBaseParent}>
+            <Upload
+              showUploadList={false}
+              beforeUpload={beforeUpload}
+              fileList={files}
             >
-              Add more
-            </Button>
-          </Upload>
-        </div>
+              <Button
+                className={styles.buttonBase}
+                type="default"
+                icon={<PlusOutlined />}
+              >
+                Add more
+              </Button>
+            </Upload>
+          </div>
+        )}
         <div className={styles.fileAdded}>{files.length} file{files.length > 1 ? "s" : ""} added</div>
       </div>
       <div className={styles.frameGroup}>
