@@ -41,12 +41,13 @@
     position: relative;
   }
   .nutParent {
-    width: 76px;
+    width: auto;
     display: flex;
     flex-direction: row;
     align-items: center;
     justify-content: space-between;
     gap: var(--gap-0);
+    margin-right: 8px;
   }
   .progressBar {
     margin-top: -8px !important;

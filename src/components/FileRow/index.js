@@ -123,7 +123,7 @@ const FileRow = ({ file, serial, start, handleDelete }) => {
           <div className={styles.mb}>{fileSize}</div>
         </div>
         <div className={styles.badgeParent}>
-          {["Uploading", "Converting"].includes(status?.get()) && <Spin indicator={<LoadingOutlined spin />} /> } 
+          {["Uploading", "Converting"].includes(status?.get()) && <Spin size="small" indicator={<LoadingOutlined spin />} /> } 
           <Tag color={statusColor()}>{status?.get()}</Tag>
           <div className={styles.nutParent}>
             {status?.get() === "To upload" && (
@@ -131,7 +131,7 @@ const FileRow = ({ file, serial, start, handleDelete }) => {
                 className={styles.nut}
                 style={{ width: "24px" }}
                 type="text"
-                icon={<DeleteOutlined />}
+                icon={<DeleteOutlined style={{ fontSize: "16px" }} />}
                 onClick={handleDelete}
               />
             )}
