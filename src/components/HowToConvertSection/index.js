@@ -15,13 +15,15 @@ const HowToConvert = ({ from = "", to = "" }) => {
               ” button and select files you want to convert.
             </span>
           </li>
-          <li className={styles.selectTheFormatYouWantThe}>
-            <span className={styles.buttonAndSelect}>
-              Select the format you want the file to convert to by clicking “
-            </span>
-            <span className={styles.selectFiles}>To</span>
-            <span className={styles.clickThe}>” dropdown</span>
-          </li>
+          {(!!from && !Boolean(to)) && (
+            <li className={styles.selectTheFormatYouWantThe}>
+              <span className={styles.buttonAndSelect}>
+                Select the format you want the file to convert to by clicking “
+              </span>
+              <span className={styles.selectFiles}>To</span>
+              <span className={styles.clickThe}>” dropdown</span>
+            </li>
+          )}
           <li className={styles.selectTheFormatYouWantThe}>
             <span className={styles.clickThe}>
               Convert the file by clicking on the “
