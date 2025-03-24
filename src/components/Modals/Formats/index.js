@@ -6,7 +6,11 @@ import * as styles from "./index.module.css";
 import formatsCategories from "../../../data/formats-categories.json";
 import formatsFromTo from "../../../data/formats-from-to.json";
 
+import useIsSmallScreen from "../../../hooks/useIsSmallScreen";
+
 const FormatsModal = ({ open, onClose, isFrom, from, to, handleFormatSelect }) => {
+  const isSmallScreen = useIsSmallScreen();
+
   //-------------------------------------------------------------------------
   const getInitialCategory = (isFrom_, from_, to_) => {
     let sel = (isFrom_ ? from_ : to_);
@@ -118,7 +122,7 @@ const FormatsModal = ({ open, onClose, isFrom, from, to, handleFormatSelect }) =
       onCancel={onClose}
       footer={null}
       className={styles.dropdownFormats}
-    ><div style={{ flexDirection: "row", display: "flex", width: "480px" }}>
+    ><div style={{ flexDirection: "row", display: "flex", width: isSmallScreen ? "300px" : "480px" }}>
       <div className={styles.buttonBaseParent}>
         {renderCategories()}
       </div>

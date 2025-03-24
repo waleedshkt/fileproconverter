@@ -48,3 +48,8 @@
     max-height: 100%;
   }
   
+  @media screen and (max-width: 596px) {
+    .buttonBaseGroup {
+      padding: 0px !important;
+    }
+  }
