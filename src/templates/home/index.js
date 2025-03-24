@@ -8,8 +8,8 @@ import Header from "../../components/Header";
 import USPSection from "../../components/UspSection";
 import AddMoreSection from "../../components/AddMoreFilesSection";
 import HowToConvert from "../../components/HowToConvertSection";
-import Conversions from "../../components/Conversions";
-import FormatsOverview from "../../components/FormatsOverview";
+// import Conversions from "../../components/Conversions";
+// import FormatsOverview from "../../components/FormatsOverview";
 import Footer from "../../components/Footer";
 import * as styles from "./index.module.css";
 
@@ -57,7 +57,7 @@ const Page = ({ pageContext }) => {
       navigate(`/${from?.toLowerCase()}-converter`);
     }
 
-    toggleFormatsModal(false);
+    toggleFormatsModal(false)();
   }, [data.type]);
 
   const beforeUpload = useCallback((file) => {
@@ -98,8 +98,12 @@ const Page = ({ pageContext }) => {
           from_ = fileFormat;
         }
 
-        return { files: p.files.concat([file]), from: from_ , to: newFrom ? "" : p.to };
+        return { files: p.files.concat([file]), from: from_.toUpperCase().substr(1, 20), to: newFrom ? "" : p.to };
       });
+
+      if(from_ === fileFormat) {
+        from_.shift();
+      }
 
       newFrom && navigate(`/${from_}-converter`);
 
@@ -200,14 +204,14 @@ const Page = ({ pageContext }) => {
                 from={selection_.from?.get()} 
                 to={selection_.to?.get()} 
               />
-              {data?.conversions?.map((o, i) => (
+              {/* {data?.conversions?.map((o, i) => (
                 <Conversions 
                   key={i}
                   heading={o.heading}
                   linksArr={o.linksArray}
                 />
-              ))}
-              <Divider className={styles.divider} />
+              ))} */}
+              {/* <Divider className={styles.divider} /> */}
               {/* <FormatsOverview
                 info={data?.formatOverview}
               /> */}
@@ -221,7 +225,7 @@ const Page = ({ pageContext }) => {
         </main>
         <Footer />
       </div>
-      {formatsModal?.open?.get() && (
+      {formatsModal?.open?.get() &&
         <FormatsModal 
           open={formatsModal?.open?.get()}
           onClose={toggleFormatsModal(false)}
@@ -230,7 +234,7 @@ const Page = ({ pageContext }) => {
           to={selection_?.to?.get()}
           handleFormatSelect={handleFormatSelect}
         />
-      )}
+      }
     </>
   );
 };
