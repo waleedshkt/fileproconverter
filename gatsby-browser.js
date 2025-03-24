@@ -13,7 +13,9 @@ export const wrapRootElement = ({ element }) => {
                 theme={{
                     components: {
                         Button: {
-                            colorPrimary: "#7e56d9"
+                            colorPrimary: "#7e56d9",
+                            defaultBorderColor: "#7e56d9",
+                            defaultColor: "#7e56d9"
                         }
                     }
                 }}
