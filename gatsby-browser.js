@@ -5,12 +5,18 @@ import Loader from "./src/components/Loader";
 import Message from "./src/components/Message";
 import { ConfigProvider } from "antd";
 
-export const wrapRootElement = withAuthProvider(({ element }) => {
+export const wrapRootElement = ({ element }) => {
     
     return (
         <>
             <ConfigProvider 
-                theme={{}}
+                theme={{
+                    components: {
+                        Button: {
+                            colorPrimary: "#7e56d9"
+                        }
+                    }
+                }}
             >
                 {element}
                 <Loader />
@@ -18,4 +24,4 @@ export const wrapRootElement = withAuthProvider(({ element }) => {
             </ConfigProvider>    
         </>
     );
-});
+};
