@@ -17,7 +17,7 @@ const LowerHero = ({ }) => {
  */
   return (
     <>
-      <div className={[styles.lowerHero, className].join(" ")}>
+      <div className={styles.lowerHero}>
         <div className={styles.headingAndSupportingText}>
           <div className={styles.heading}>Unlimited file conversions. No ads.</div>
           <div className={styles.supportingText}>

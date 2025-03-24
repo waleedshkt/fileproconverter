@@ -61,7 +61,7 @@
       flex-direction: column;
     }
   }
-  @media screen and (max-width: 420px) {
+  @media screen and (max-width: 596px) {
     .heading {
       font-size: var(--text-md-semibold-size);
     }

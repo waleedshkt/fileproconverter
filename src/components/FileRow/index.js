@@ -1,4 +1,4 @@
-import React, { memo } from "react";
+import React, { memo, useMemo, useCallback, useEffect } from "react";
 import { useHookstate as useState } from "@hookstate/core";
 import { v4 as uuid } from "uuid";
 import { Button, Progress, Tag, Spin } from "antd";
@@ -47,7 +47,7 @@ const FileRow = ({ file, serial, start, handleDelete }) => {
       request.addEventListener("load", loadHandler, false);
       request.addEventListener("error", errorHandler, false);
 
-      request.open("GET", `https://server.fileproconverter.com/download?dir=${uid?.get()}`, true);
+      request.open("GET", `${process.env.GATSBY_SERVER_URL}download?dir=${uid?.get()}`, true);
       request.send();
 
       status.set("Downloading");
@@ -78,7 +78,9 @@ const FileRow = ({ file, serial, start, handleDelete }) => {
       request.addEventListener("load", loadHandler, false);
       request.addEventListener("error", errorHandler, false);
 
-      request.open("POST", "http://localhost:8080/");
+      console.log(process.env.GATSBY_SERVER_URL);
+
+      request.open("POST", process.env.GATSBY_SERVER_URL);
       request.send(formData);
 
       status.set("Uploading");
@@ -114,37 +116,39 @@ const FileRow = ({ file, serial, start, handleDelete }) => {
   }, [start]);
 
   return (
-    <li className={styles.frameParent}>
-      <div className={styles.filenamejpgParent}>
-        <div className={styles.filenamejpg}>{file.name}</div>
-        <div className={styles.mb}>{fileSize}</div>
-      </div>
-      <div className={styles.badgeParent}>
-        {["Uploading", "Converting"].includes(status?.get()) && <Spin indicator={<LoadingOutlined spin />} /> } 
-        <Tag color={statusColor()}>{status?.get()}</Tag>
-        <div className={styles.nutParent}>
-          {status?.get() === "To upload" && (
-            <Button
-              className={styles.nut}
-              style={{ width: "24px" }}
-              type="text"
-              icon={<DeleteOutlined />}
-              onClick={handleDelete}
-            />
-          )}
-          {status?.get() === "Done" && (
-            <Button
-              className={styles.nut}
-              type="default"
-              onClick={handleDownload}
-            >
-              Download
-            </Button>
-          )}
+    <div style={{ alignSelf: "stretch" }}>
+      <div className={styles.frameParent}>
+        <div className={styles.filenamejpgParent}>
+          <div className={styles.filenamejpg}>{file.name}</div>
+          <div className={styles.mb}>{fileSize}</div>
+        </div>
+        <div className={styles.badgeParent}>
+          {["Uploading", "Converting"].includes(status?.get()) && <Spin indicator={<LoadingOutlined spin />} /> } 
+          <Tag color={statusColor()}>{status?.get()}</Tag>
+          <div className={styles.nutParent}>
+            {status?.get() === "To upload" && (
+              <Button
+                className={styles.nut}
+                style={{ width: "24px" }}
+                type="text"
+                icon={<DeleteOutlined />}
+                onClick={handleDelete}
+              />
+            )}
+            {status?.get() === "Done" && (
+              <Button
+                className={styles.nut}
+                type="default"
+                onClick={handleDownload}
+              >
+                Download
+              </Button>
+            )}
+          </div>
         </div>
       </div>
       {status?.get() === "Uploading" && <Progress percent={uploadProgress?.get()} className={styles.progressBar} />}
-    </li>
+    </div>
   );
 };
 

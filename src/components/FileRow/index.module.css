@@ -49,6 +49,7 @@
     gap: var(--gap-0);
   }
   .progressBar {
+    margin-top: -8px !important;
     width: "100%";
   }
   .badgeParent {
@@ -62,7 +63,7 @@
     color: var(--purple-700);
   }
   .frameParent {
-    width: 569px;
+    width: "100&";
     border-radius: var(--br-5xs);
     background-color: var(--white);
     height: 53px;

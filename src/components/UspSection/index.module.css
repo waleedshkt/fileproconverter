@@ -18,9 +18,10 @@
   .shieldcheckIcon {
     position: absolute;
     top: 18px;
-    left: 67px;
+    left: 50%;
     width: 56px;
     height: 56px;
+    transform: translateX(-50%);
   }
   .highlySecureParent {
     width: 189px;
@@ -96,26 +97,34 @@
   @media screen and (max-width: 668px) {
     .uspSection {
       align-self: stretch;
-      width: auto;
-      flex-direction: column;
+      width: "100%";
+      position: relative;
+      display: flex;
+      flex-direction: column !important;
       gap: var(--gap-xl);
-      align-items: flex-start;
-      justify-content: flex-start;
+      margin-bottom: 544px;
+      align-items: flex-start !important;
+      justify-content: flex-start !important;
     }
 
     .highlySecureParent {
       align-self: stretch;
-      width: "100%";
+      width: calc(100vw - 40px) !important;
     }
   
     .autoDeletionParent {
+      margin-top: 262px !important;
+      left: 0;
       align-self: stretch;
-      width: "100%";
+      width: calc(100vw - 40px) !important;
     }
   
     .cloudRunParent {
+      margin-top: 524px !important;
+      left: 0;
       align-self: stretch;
-      width: "100%";
+      width: calc(100vw - 40px) !important;
+      
     }
     
   }

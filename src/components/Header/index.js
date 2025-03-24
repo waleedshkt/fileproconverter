@@ -24,17 +24,17 @@ const Header = ({  }) => {
   const openSideMenu = useState(false);
 
   const dropdownItems = useMemo(() => [
-    { key: "1", label: <Link to="/video-converter">Video Converter</Link> },
-    { key: "2", label: <Link to="/audio-converter">Audio Converter</Link> },
-    { key: "3", label: <Link to="/ebook-converter">E-book Converter</Link> },
-    { key: "4", label: <Link to="/image-converter">Image Converter</Link> },
-    { key: "5", label: <Link to="/archive-converter">Archive Converter</Link> },
-    { key: "6", label: <Link to="/vector-converter">Vector Converter</Link> },
-    { key: "7", label: <Link to="/document-converter">Document Converter</Link> },
-    { key: "8", label: <Link to="/convert/video-to-mp3">video to MP3</Link> },
-    { key: "9", label: <Link to="/pdf-converter">PDf Converter</Link> },
-    { key: "10", label: <Link to="/convert/image-to-pdf">Image to PDF</Link> },
-    { key: "11", label: <Link to="/convert/image-to-word">Image to Word</Link> }
+    { key: "1", label: <Link className={styles.dropdownItem} to="/video-converter">Video Converter</Link> },
+    { key: "2", label: <Link className={styles.dropdownItem} to="/audio-converter">Audio Converter</Link> },
+    { key: "3", label: <Link className={styles.dropdownItem} to="/ebook-converter">E-book Converter</Link> },
+    { key: "4", label: <Link className={styles.dropdownItem} to="/image-converter">Image Converter</Link> },
+    { key: "5", label: <Link className={styles.dropdownItem} to="/archive-converter">Archive Converter</Link> },
+    { key: "6", label: <Link className={styles.dropdownItem} to="/vector-converter">Vector Converter</Link> },
+    { key: "7", label: <Link className={styles.dropdownItem} to="/document-converter">Document Converter</Link> },
+    { key: "8", label: <Link className={styles.dropdownItem} to="/video-to-mp3">Video to MP3</Link> },
+    { key: "9", label: <Link className={styles.dropdownItem} to="/pdf-converter">PDf Converter</Link> },
+    { key: "10", label: <Link className={styles.dropdownItem} to="/image-to-pdf">Image to PDF</Link> },
+    { key: "11", label: <Link className={styles.dropdownItem} to="/image-to-word">Image to Word</Link> }
   ], []);
 
   // const toggleRegisterModal = useCallback(open => () => openRegisterModal?.set(open), []);
@@ -64,7 +64,7 @@ const Header = ({  }) => {
             </div>
             <div className={styles.dropdownHeaderNavigationTri}>
               <Dropdown
-                menu={{dropdownItems}}
+                menu={{ items: dropdownItems}}
               >
                 <a onClick={e => e.preventDefault()}>
                   <Space>
@@ -75,7 +75,7 @@ const Header = ({  }) => {
               </Dropdown>
             </div>
           </div>
-          {/* <Button 
+          <Button 
             type="text"
             className={styles.mobileMenuBtn} 
             onClick={toggleSideMenu(true)}
@@ -83,7 +83,7 @@ const Header = ({  }) => {
               <MenuOutlined />
             )}
           />
-          <div className={styles.desktopNavBtns}>
+          {/* <div className={styles.desktopNavBtns}>
             {(!isAuth_?.get() || (isAuth?.get() && !subscribed?.get())) ? (
               <>
                 <Button

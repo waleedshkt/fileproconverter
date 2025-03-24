@@ -7,7 +7,7 @@
   .text {
     position: relative;
     line-height: var(--font-size-5xl);
-    font-weight: 600;
+    font-weight: 500;
   }
   .buttonBase {
     cursor: pointer;
@@ -39,6 +39,7 @@
     flex-direction: row;
     align-items: center;
     justify-content: center;
+    color: var(--white);
   }
   .footerLinks4 {
     align-self: stretch;
@@ -153,7 +154,7 @@
     font-family: var(--text-md-semibold);
   }
   
-  @media screen and (max-width: 420px) {
+  @media screen and (max-width: 596px) {
     .heading {
       font-size: var(--text-md-semibold-size);
     }

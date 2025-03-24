@@ -11,6 +11,7 @@ const USPSection = ({ }) => (
       </div>
       <div className={styles.shieldcheckIcon}>
         <StaticImage 
+          alt="Highly Secure"
           objectFit="contain"
           layout="full-width"
           src="../../images/shield-check.png"
@@ -25,6 +26,7 @@ const USPSection = ({ }) => (
       </div>
       <div className={styles.shieldcheckIcon}>
         <StaticImage 
+          alt="Auto Deletion"
           objectFit="contain"
           layout="full-width"
           src="../../images/eraser.png"
@@ -39,6 +41,7 @@ const USPSection = ({ }) => (
       </div>
       <div className={styles.shieldcheckIcon}>
         <StaticImage 
+          alt="Cloud Run"
           objectFit="contain"
           layout="full-width"
           src="../../images/cloud-check.png"

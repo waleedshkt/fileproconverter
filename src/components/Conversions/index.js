@@ -8,7 +8,7 @@ const Conversions = ({ linksArr, heading }) => {
     <div className={styles.popularConversions}>
       <div className={styles.popularConversions1}>{heading}</div>
       <div className={styles.pdfToJpgParent}>
-        {linksArr.map((o, i) => <Link className={i < 1 ? styles.pdfToJpg : styles.pdfToJpg1} to={o.link}>{o.name}</Link>)}
+        {linksArr.map((o, i) => <Link className={styles.pdfToJpg1} to={o.link}>{o.name}</Link>)}
       </div>
     </div>
   );

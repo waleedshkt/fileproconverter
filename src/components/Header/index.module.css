@@ -17,10 +17,15 @@
   .anyConvertercom {
     position: relative;
     line-height: var(--font-size-5xl);
+    color: var(--color-mediumslateblue-100);
+  }
+  .dropdownItem {
+    font-size: var(--text-md-semibold-size);
   }
   .logoWrap {
     display: flex;
     flex-direction: row;
+    cursor: pointer;
     align-items: center;
     justify-content: flex-start;
     gap: var(--gap-5xs);
@@ -93,6 +98,7 @@
     font-size: var(--text-md-semibold-size);
     color: var(--gray-700);
     font-family: var(--text-md-semibold);
+    right: -20px;
   }
   .button1 {
     cursor: pointer;
@@ -151,7 +157,7 @@
       display: none;
     }
   }
-  @media screen and (max-width: 420px) {
+  @media screen and (max-width: 596px) {
     .anyConvertercom {
       font-size: var(--text-lg-semibold-size);
     }

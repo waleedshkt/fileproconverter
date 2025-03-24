@@ -63,6 +63,7 @@ const FormatsModal = ({ open, onClose, isFrom, from, to, handleFormatSelect }) =
         className={styles.buttonBase} 
         type={currentCategory?.get() === c ? "primary" : "text"}
         onMouseOver={handleOnHoverCategory(c)}
+        onClick={handleOnHoverCategory(c)}
       >
         {c}
       </Button>
@@ -94,6 +95,7 @@ const FormatsModal = ({ open, onClose, isFrom, from, to, handleFormatSelect }) =
         key={f} 
         type={((isFrom && !!from && from === f) || (!isFrom && !!to && to === f)) ? "primary" : "text"}
         onClick={handleFormatSelect(f, isFrom)}
+        className={styles.formatButton}
       >
         {f}
       </Button>
@@ -113,14 +115,16 @@ const FormatsModal = ({ open, onClose, isFrom, from, to, handleFormatSelect }) =
       open={open}
       closable
       onClose={onClose}
+      onCancel={onClose}
       footer={null}
       className={styles.dropdownFormats}
-    >
+    ><div style={{ flexDirection: "row", display: "flex", width: "480px" }}>
       <div className={styles.buttonBaseParent}>
         {renderCategories()}
       </div>
       <div className={styles.buttonBaseGroup}>
         {renderFormats()}
+      </div>
       </div>
     </Modal>
   );

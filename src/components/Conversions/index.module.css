@@ -5,10 +5,8 @@
   }
   .pdfToJpg {
     cursor: pointer;
-    text-decoration: none;
     position: relative;
     line-height: var(--font-size-5xl);
-    font-weight: 700;
     color: inherit;
   }
   .pdfToJpg1 {
@@ -30,14 +28,16 @@
   }
   .popularConversions {
     align-self: stretch;
-    border: 1px solid var(--color-mediumslateblue-100);
-    box-sizing: border-box;
-    overflow: hidden;
+    /* border: 1px solid var(--color-mediumslateblue-100); */
+    /* box-sizing: border-box; */
+    /* overflow: hidden; */
     display: flex;
     flex-direction: column;
     align-items: flex-start;
     justify-content: flex-start;
-    padding: var(--padding-5xl);
+    padding-right: var(--padding-5xl);
+    padding-left: var(--padding-5xl);
+    padding-bottom: var(--padding-5xl) !important;
     gap: var(--gap-5xl);
     min-height: 160px;
     text-align: left;
@@ -51,7 +51,7 @@
       height: auto;
     }
   }
-  @media screen and (max-width: 420px) {
+  @media screen and (max-width: 596px) {
     .popularConversions1 {
       font-size: var(--text-md-semibold-size);
     }

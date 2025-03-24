@@ -52,7 +52,7 @@
       height: auto;
     }
   }
-  @media screen and (max-width: 420px) {
+  @media screen and (max-width: 596px) {
     .howToConvert1 {
       font-size: var(--text-md-semibold-size);
     }

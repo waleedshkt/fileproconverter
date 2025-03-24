@@ -1,9 +1,9 @@
-import React, { memo, useCallback, useEffect } from "react";
-import { useHookstate as useState } from "@hookstate/core";
+import React, { memo, useEffect } from "react";
+// import { useHookstate as useState } from "@hookstate/core";
 import { Link } from "gatsby";
 import { Button, List } from "antd";
 import { CloseOutlined } from "@ant-design/icons";
-import * as styles from "./side-menu.module.css";
+import * as styles from "./index.module.css";
 
 /* import { isAuth, subscription } from "../../../globalStates";
 

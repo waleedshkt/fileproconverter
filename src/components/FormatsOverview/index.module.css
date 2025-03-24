@@ -85,8 +85,9 @@
   .formatsOverview {
     align-self: stretch;
     position: relative;
-    height: 294px;
-    overflow: hidden;
+    display: block !important;
+    height: auto !important;
+    /* overflow: hidden; */
     flex-shrink: 0;
     text-align: left;
     font-size: var(--text-md-semibold-size);
