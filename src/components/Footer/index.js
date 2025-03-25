@@ -64,7 +64,7 @@ const Footer = ({ }) => (
           <div className={styles.footerLinksColumn}>
             <div className={styles.heading}>Document & Ebook Converter</div>
             <div className={styles.footerLinks}>
-              <Link className={styles.buttonBase} to="/pdf-to-word">
+              <Link className={styles.buttonBase} to="/pdf-converter">
                 <div className={styles.text}>PDf to WORD</div>
               </Link>
               <Link className={styles.buttonBase} to="/epub-to-mobi">

@@ -20,10 +20,10 @@ const FILE_CONVERTERS_LIST = [
   { name: "Archive Converter", link: "/archive-converter" },
   { name: "Vector Converter", link: "/vector-converter" },
   { name: "Document Converter", link: "/document-converter" },
-  { name: "Video to MP3", link: "/convert/video-to-mp3" },
+  { name: "Video to MP3", link: "/video-converter" },
   { name: "PDF Converter", link: "/pdf-converter" },
-  { name: "Image to PDf", link: "/convert/image-to-pdf" },
-  { name: "Image to Word", link: "/convert/image-to-word" }
+  { name: "Image to PDf", link: "/image-converter" },
+  { name: "Image to Word", link: "/image-converter" }
 ];
 
 const SideMenu = ({ onClose }) => {
