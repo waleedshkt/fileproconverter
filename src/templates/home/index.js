@@ -98,7 +98,7 @@ const Page = ({ pageContext }) => {
           from_ = fileFormat;
         }
 
-        return { files: p.files.concat([file]), from: from_.toUpperCase().substr(1, 20), to: newFrom ? "" : p.to };
+        return { files: p.files.concat([file]), from: newFrom ? from_.toUpperCase().substr(1, 20) : from_, to: newFrom ? "" : p.to };
       });
 
       if(from_ === fileFormat) {
