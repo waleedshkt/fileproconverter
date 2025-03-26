@@ -58,7 +58,7 @@
     flex-direction: row;
     align-items: center;
     justify-content: flex-start;
-    gap: var(--gap-10xl);
+    gap: var(--gap-xs);
     text-align: center;
     font-size: var(--text-sm-regular-size);
     color: var(--purple-700);
