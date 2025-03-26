@@ -16,6 +16,9 @@ export const wrapRootElement = ({ element }) => {
                             colorPrimary: "#7e56d9",
                             defaultBorderColor: "#7e56d9",
                             defaultColor: "#7e56d9"
+                        },
+                        Progress: {
+                            defaultColor: "#7e56d9"
                         }
                     }
                 }}
