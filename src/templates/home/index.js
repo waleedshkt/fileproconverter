@@ -111,6 +111,36 @@ const Page = ({ pageContext }) => {
 
   }, [data?.formatExtensions, data?.fromTo]);
 
+  const addMoreBeforeUpload = useCallback((file) => {
+      let fileFormat = file.name?.split(".");
+      fileFormat.shift();
+      fileFormat = fileFormat.join(".").toLowerCase(); // for cases such as .TAR.GZ 
+      fileFormat = "." + fileFormat;
+
+      console.log(data.formatExtensions, fileFormat);
+
+      if(!data.formatExtensions.includes(fileFormat)) { // here formats array prop comes from top 'data' page prop
+        
+        // not yet supported format
+        let content = (data.type !== "both" && data.formatExtensions.length > 1) ? "Sorry. This format is not yet supported." : "Sorry. The file format is invalid."
+
+        misc_.message.set({ type: "error", content });
+        return false;
+      }
+
+
+      let fileSize = file.size / 1024 / 1024 / 1024;
+      if(fileSize > 1) { // GB
+        // above size limit
+        misc_.message.set({ type: "error", content: "1GB size limit exceeded" });
+        return false;
+      }
+
+      selection_.files.merge([file]);
+
+      return false;
+  }, [data.formatExtensions, data.fromTo]);
+
   const handleUpload = useCallback(() => beginUpload?.set(true), []);
 
   const handleDeleteFile = useCallback((index) => () => {
@@ -175,7 +205,7 @@ const Page = ({ pageContext }) => {
                     files={selection_?.files?.get()}
                     handleUpload={handleUpload}
                     handleDeleteFile={handleDeleteFile}
-                    beforeUpload={beforeUpload}
+                    beforeUpload={addMoreBeforeUpload}
                   />
                 ) : (
                   <div className={styles.uploadSection}>
