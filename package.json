@@ -19,6 +19,7 @@
     "@fingerprintjs/botd": "fingerprintjs/botd",
     "@hookstate/core": "^4.0.1",
     "antd": "^5.24.3",
+    "axios": "^1.8.4",
     "dotenv": "^16.4.7",
     "gatsby": "^5.14.1",
     "gatsby-plugin-brotli": "^2.1.0",

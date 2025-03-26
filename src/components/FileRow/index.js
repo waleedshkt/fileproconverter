@@ -1,11 +1,14 @@
 import React, { memo, useMemo, useCallback, useEffect } from "react";
 import { useHookstate as useState } from "@hookstate/core";
 import { v4 as uuid } from "uuid";
+import axios from "axios";
 import { Button, Progress, Tag, Spin } from "antd";
 import { DeleteOutlined, LoadingOutlined } from "@ant-design/icons";
 import * as styles from "./index.module.css";
 
-const FileRow = ({ file, serial, start, handleDelete }) => {
+import { truncateString } from "../../helpers";
+
+const FileRow = ({ file, to, serial, start, handleDelete }) => {
   const status = useState("To upload");
   const uploadProgress = useState(0);
   const uid = useState("");
@@ -41,28 +44,29 @@ const FileRow = ({ file, serial, start, handleDelete }) => {
   }, [status?.get()]);
 
   const handleDownload = useCallback(() => {
-      
-      const request = new XMLHttpRequest();
 
-      request.addEventListener("load", loadHandler, false);
-      request.addEventListener("error", errorHandler, false);
+      axios({
+        url: `http://3.82.165.29:5000/download?dir=${uid?.get()}`,
+        method: "GET",
+        responseType: "blob"
+      })
+        .then(res => {
+          //console.log(res.data);
+          const href = URL.createObjectURL(res.data);
+          //console.log(href);
+          
+          const link = document.createElement("a");
+          link.href = href;
+          link.setAttribute("download", `output.${to.toLowerCase()}`);
+          document.body.appendChild(link);
+          link.click();
 
-      request.open("GET", `${process.env.GATSBY_SERVER_URL}download?dir=${uid?.get()}`, true);
-      request.send();
+          document.body.removeChild(link);
+          URL.revokeObjectURL(href);
+        })
+        .catch(er => console.log(er));
 
-      status.set("Downloading");
-
-      function loadHandler(event) {
-          //console.log(event.target.responseText);
-          status.set("Done");
-      }
-
-      function errorHandler(event) {
-          //console.log(event.target.responseText);
-          status.set("Error");
-      }
-
-  }, [uid?.get()]);
+  }, [uid?.get(), to]);
 
   const initializeConversion = useCallback(() => {
 
@@ -74,13 +78,25 @@ const FileRow = ({ file, serial, start, handleDelete }) => {
 
       const request = new XMLHttpRequest();
 
-      request.addEventListener("progress", progressHandler, false);
       request.addEventListener("load", loadHandler, false);
       request.addEventListener("error", errorHandler, false);
 
       console.log(process.env.GATSBY_SERVER_URL);
 
-      request.open("POST", process.env.GATSBY_SERVER_URL);
+      request.open("POST", "http://3.82.165.29:5000/", true);
+
+      request.upload.onprogress = function(e) {
+        if(e.lengthComputable) {
+          let p = (e.loaded / e.total * 100).toFixed(2);
+          //console.log(p);
+          uploadProgress.set(p);
+
+          if(p === 100) {
+              status.set("Converting");
+          }
+        }
+      };
+
       request.send(formData);
 
       status.set("Uploading");
@@ -88,15 +104,6 @@ const FileRow = ({ file, serial, start, handleDelete }) => {
       setTimeout(() => {
           uid.set(uid_);
       }, 0);
-
-      function progressHandler(event) {
-          let p = (event.loaded / event.total * 100).toFixed(2);
-          uploadProgress.set(p);
-
-          if(p === 100) {
-              status.set("Converting");
-          }
-      }
 
       function loadHandler(event) {
           //console.log(event.target.responseText);
@@ -119,7 +126,7 @@ const FileRow = ({ file, serial, start, handleDelete }) => {
     <div style={{ alignSelf: "stretch" }}>
       <div className={styles.frameParent}>
         <div className={styles.filenamejpgParent}>
-          <div className={styles.filenamejpg}>{file.name}</div>
+          <div className={styles.filenamejpg}>{truncateString(file.name, 10)}</div>
           <div className={styles.mb}>{fileSize}</div>
         </div>
         <div className={styles.badgeParent}>
