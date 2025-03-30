@@ -1143,12 +1143,6 @@
     minimatch "^3.0.4"
     strip-json-comments "^3.1.1"
 
-"@fingerprintjs/botd@fingerprintjs/botd":
-  version "1.9.1"
-  resolved "https://codeload.github.com/fingerprintjs/botd/tar.gz/b57b88308967eeca1c8505f26006121e85096e0f"
-  dependencies:
-    tslib "^2.4.0"
-
 "@gatsbyjs/parcel-namer-relative-to-cwd@2.14.0":
   version "2.14.0"
   resolved "https://registry.yarnpkg.com/@gatsbyjs/parcel-namer-relative-to-cwd/-/parcel-namer-relative-to-cwd-2.14.0.tgz#46556c54c7c958528c1fdf9bda2a3d96886bdd2c"
