@@ -165,8 +165,12 @@ const Page = ({ pageContext }) => {
         <main className={styles.body}>
           <div className={styles.main}>
             <div className={styles.adWrapper}>
-              <div className={styles.ad} />
-              <div className={styles.ad_} />
+              <div className={styles.ad}>
+                <iframe src="//www.highperformanceformat.com/watchnew?key=adc7fafb678386945efbc4eaed251170" width="300" height="250" frameborder="0" scrolling="no"></iframe>
+              </div>
+              <div className={styles.ad_}>
+              <iframe src="//www.highperformanceformat.com/watchnew?key=0c054677a2eb743d626385c3f8250930" width="160" height="600" frameborder="0" scrolling="no"></iframe>
+              </div>
             </div>
             <section className={styles.content}>
               <div className={styles.content1}>
@@ -194,9 +198,15 @@ const Page = ({ pageContext }) => {
                     </div>
                   </div>
                 </div>
-                <div className={styles.ad1} />
-                <div className={styles.ad1_} />
-                <div className={styles.ad1__} />
+                <div className={styles.ad1}>
+                  <iframe src="//www.highperformanceformat.com/watchnew?key=c01c090071dee2edef17b1115000f485" width="468" height="60" frameborder="0" scrolling="no"></iframe>
+                </div>
+                <div className={styles.ad1_}>
+                   <iframe src="//www.highperformanceformat.com/watchnew?key=dfced92482acef8ef4ba276e470ea779" width="728" height="90" frameborder="0" scrolling="no"></iframe>
+                </div>
+                <div className={styles.ad1__}>
+                  <iframe src="//www.highperformanceformat.com/watchnew?key=e7ed33fd0d9f2bae7ee7bd055d8fc61f" width="320" height="50" frameborder="0" scrolling="no"></iframe>
+                </div>
                 {selection_?.files?.length ? (
                   <AddMoreSection 
                     from={selection_?.from?.get()}
@@ -225,9 +235,15 @@ const Page = ({ pageContext }) => {
                     {/* <div className={styles.maxFileSize}>Max File Size: 2GB</div> */}
                   </div>
                 )}
-                <div className={styles.ad2} />
-                <div className={styles.ad2_} />
-                <div className={styles.ad2__} />
+                <div className={styles.ad2}>
+                   <iframe src="//www.highperformanceformat.com/watchnew?key=c01c090071dee2edef17b1115000f485" width="468" height="60" frameborder="0" scrolling="no"></iframe>
+                </div>
+                <div className={styles.ad2_}>
+                    <iframe src="//www.highperformanceformat.com/watchnew?key=dfced92482acef8ef4ba276e470ea779" width="728" height="90" frameborder="0" scrolling="no"></iframe>
+                </div>
+                <div className={styles.ad2__}>
+                   <iframe src="//www.highperformanceformat.com/watchnew?key=adc7fafb678386945efbc4eaed251170" width="300" height="250" frameborder="0" scrolling="no"></iframe>
+                </div>
                 <USPSection />
               </div>
               <HowToConvert 
@@ -245,11 +261,17 @@ const Page = ({ pageContext }) => {
               {/* <FormatsOverview
                 info={data?.formatOverview}
               /> */}
-              <div className={styles.ad3} />
+              <div className={styles.ad3}>
+                  <iframe src="//www.highperformanceformat.com/watchnew?key=adc7fafb678386945efbc4eaed251170" width="300" height="250" frameborder="0" scrolling="no"></iframe>
+              </div>
             </section>
             <div className={styles.adWrapper}>
-              <div className={styles.ad4} />
-              <div className={styles.ad4_} />
+              <div className={styles.ad4}>
+                 <iframe src="//www.highperformanceformat.com/watchnew?key=adc7fafb678386945efbc4eaed251170" width="300" height="250" frameborder="0" scrolling="no"></iframe>
+              </div>
+              <div className={styles.ad4_}>
+                 <iframe src="//www.highperformanceformat.com/watchnew?key=0c054677a2eb743d626385c3f8250930" width="160" height="600" frameborder="0" scrolling="no"></iframe>
+              </div>
             </div>
           </div>
         </main>
