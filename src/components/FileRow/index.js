@@ -46,7 +46,7 @@ const FileRow = ({ file, to, serial, start, handleDelete }) => {
   const handleDownload = useCallback(() => {
 
       axios({
-        url: `http://3.82.165.29:5000/download?dir=${uid?.get()}`,
+        url: `${process.env.GATSBY_SERVER_URL}download?dir=${uid?.get()}`,
         method: "GET",
         responseType: "blob"
       })
@@ -83,16 +83,17 @@ const FileRow = ({ file, to, serial, start, handleDelete }) => {
 
       console.log(process.env.GATSBY_SERVER_URL);
 
-      request.open("POST", "http://3.82.165.29:5000/", true);
+      request.open("POST", process.env.GATSBY_SERVER_URL, true);
 
       request.upload.onprogress = function(e) {
         if(e.lengthComputable) {
-          let p = (e.loaded / e.total * 100).toFixed(2);
-          //console.log(p);
+          let p = (e.loaded / e.total * 100).toFixed(1);
+          //console.log(p, typeof p);
           uploadProgress.set(p);
 
-          if(p === 100) {
-              status.set("Converting");
+          if(p === "100.0") {
+            console.log("converting");
+            status.set("Converting");
           }
         }
       };
