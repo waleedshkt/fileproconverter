@@ -14,7 +14,7 @@ module.exports = {
     siteUrl: `https://fileproconverter.com`,
     image: `/brand-banner.png`
   }
-,
+  ,
   plugins: [
     `gatsby-plugin-layout`,
     {
@@ -27,16 +27,6 @@ module.exports = {
       resolve: `gatsby-plugin-brotli`,
       options: {
         level: 4 // best level for fetching and compressing/decompressing on web browsers 
-      }
-    },
-    {
-      resolve: `gatsby-plugin-google-tagmanager-timeout`,
-      options: {
-        id: process.env.GTM_CONTAINER_ID,
-        includeInDevelopment: false,
-        timeout: 1000,
-        enableWebVitalsTracking: true,
-        defaultDataLayer: { platform: `gatsby` }
       }
     },
     {
